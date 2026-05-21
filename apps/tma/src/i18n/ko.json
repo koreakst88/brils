@@ -1,0 +1,193 @@
+{
+  "header": {
+    "languageSwitcher": "언어 전환",
+    "avatarLabel": "사용자 프로필"
+  },
+  "products": {
+    "bbCream": {
+      "name": "BRILS BB 크림",
+      "description": "정돈된 피부 표현과 판매 설명이 쉬운 프리미엄 톤업 베이스 제품입니다.",
+      "benefits": {
+        "one": "무겁지 않으면서도 자연스럽고 균일한 피부 표현",
+        "two": "브랜드 입문용 hero item으로 제안하기 쉬운 제품",
+        "three": "매대, 카탈로그, 상담 스크립트에 모두 잘 맞는 카테고리"
+      }
+    },
+    "salmonCream": {
+      "name": "Salmon Cream",
+      "description": "회복과 광채 포지셔닝이 강한 프리미엄 영양 크림으로 재구매 기대감이 높은 제품입니다.",
+      "benefits": {
+        "one": "리치하지만 편안한 사용감의 프리미엄 텍스처",
+        "two": "회복과 glow 메시지에 강한 스토리텔링 가능",
+        "three": "B2B 제안서와 런칭 구성에 어울리는 hero product"
+      }
+    },
+    "multiBalm": {
+      "name": "Multi Balm",
+      "description": "설명이 쉽고 파트너 세일즈에 활용하기 좋은 다목적 케어 포맷입니다.",
+      "benefits": {
+        "one": "사용 시나리오가 명확해 가치 전달이 빠름",
+        "two": "추가 판매와 기프트 세트에 잘 맞는 컴팩트 SKU",
+        "three": "매대와 메신저 홍보에 모두 잘 보이는 제품"
+      }
+    },
+    "sleepingMask": {
+      "name": "Sleeping Mask",
+      "description": "다음 날 아침 회복 효과를 직관적으로 전달할 수 있는 프리미엄 나이트 케어 제품입니다.",
+      "benefits": {
+        "one": "이브닝 루틴 스토리텔링에 적합한 형식",
+        "two": "세트 상품과 시즌 제안에 잘 어울림",
+        "three": "라인 내 업그레이드 제품으로 포지셔닝하기 쉬움"
+      }
+    },
+    "set": {
+      "name": "BRILS Set",
+      "description": "빠른 런칭을 위한 bundle offer로, 라인 전체를 하나의 프리미엄 시스템처럼 보여주는 구성입니다.",
+      "benefits": {
+        "one": "첫 도매 런칭을 위한 완성형 제안으로 구성",
+        "two": "브랜드 소개와 세일즈 팀 온보딩을 더 빠르게 지원",
+        "three": "평균 객단가와 브랜드 인지 가치를 함께 강화"
+      }
+    }
+  },
+  "screens": {
+    "country": {
+      "eyebrow": "대한민국 • 수출용 스킨케어 라인",
+      "title": "비즈니스를 위한 프리미엄 한국 화장품",
+      "description": "국가를 선택하시면 보다 적합한 조건을 안내하고 BRILS 라인 소개를 자연스럽게 이어갈 수 있습니다.",
+      "cta": "계속하기",
+      "selectedBadge": "선택됨",
+      "confirmation": "선택한 국가: {country}",
+      "confirmationIdle": "계속하려면 국가를 선택해 주세요",
+      "options": {
+        "kz": "🇰🇿 카자흐스탄",
+        "uz": "🇺🇿 우즈베키스탄",
+        "kg": "🇰🇬 키르기스스탄",
+        "tm": "🇹🇲 투르크메니스탄",
+        "other": "🌐 기타"
+      },
+      "optionHints": {
+        "kz": "중앙아시아 핵심 유통 시장",
+        "uz": "빠르게 성장하는 B2B 수요 시장",
+        "kg": "진입이 명확한 컴팩트한 시장",
+        "tm": "지역 문의를 위한 별도 라우팅",
+        "other": "주요 국가 목록 외의 시장"
+      }
+    },
+    "intent": {
+      "eyebrow": "2단계",
+      "title": "어떤 목적이 있으신가요?",
+      "description": "가장 적합한 카탈로그와 조건 안내를 위해 주요 목적을 선택해 주세요.",
+      "confirmation": "선택됨",
+      "options": {
+        "wholesale": {
+          "label": "도매 가격 및 카탈로그",
+          "hint": "제품 라인과 조건을 빠르게 확인"
+        },
+        "cooperation": {
+          "label": "협력",
+          "hint": "파트너십 방식 논의"
+        },
+        "distribution": {
+          "label": "유통",
+          "hint": "귀하의 시장에서 판매 시작"
+        },
+        "selection": {
+          "label": "제품 선택",
+          "hint": "시작용 구성 선택"
+        }
+      }
+    },
+    "products": {
+      "eyebrow": "3단계",
+      "title": "무엇에 관심이 있으신가요?",
+      "description": "다음 카탈로그 화면을 더 잘 맞추기 위해 몇 가지 카테고리를 선택해 주세요.",
+      "cta": "계속하기",
+      "options": {
+        "cream": "크림",
+        "serum": "세럼",
+        "sets": "세트",
+        "full-line": "전체 라인"
+      }
+    },
+    "catalog": {
+      "eyebrow": "제품 라인업",
+      "title": "주요 제품 4종과 바로 제안 가능한 세트",
+      "description": "필터 없이, 과한 정보 없이, B2B 대화에 필요한 핵심 SKU만 담은 컴팩트한 카탈로그입니다.",
+      "productLabel": "제품",
+      "bundleOffer": "Bundle offer",
+      "open": "상세 보기",
+      "items": {}
+    },
+    "product": {
+      "eyebrow": "제품 상세",
+      "gallery": "갤러리 3–4장 + 영상",
+      "cta": "도매 가격 문의",
+      "benefits": {}
+    },
+    "set": {
+      "eyebrow": "BRILS 세트",
+      "bundle": "완성형 제안",
+      "description": "BRILS 라인을 보다 완성도 있게 소개할 수 있는 준비된 번들 구성입니다.",
+      "whatsInsideTitle": "구성품",
+      "whatsInsideItems": {
+        "one": "BB Cream",
+        "two": "Salmon Cream",
+        "three": "Multi Balm",
+        "four": "Sleeping Mask"
+      },
+      "whyTitle": "왜 유리한가",
+      "whyItems": {
+        "one": "복잡한 SKU 선택 없이 첫 주문 구성을 바로 제안할 수 있습니다",
+        "two": "파트너와 유통사에게 라인업을 더 쉽게 설명할 수 있습니다",
+        "three": "bundle offer 형식으로 제안 가치가 더 높게 느껴집니다"
+      },
+      "cta": "도매 가격 문의"
+    },
+    "form": {
+      "eyebrow": "6단계",
+      "title": "조건을 어디로 보내드릴까요?",
+      "description": "비즈니스 연락처를 남겨주시면 담당자가 적합한 도매 조건을 준비합니다.",
+      "cta": "제출하기",
+      "loading": "전송 중...",
+      "fields": {
+        "nameOrCompany": "이름 또는 회사명",
+        "whatsapp": "WhatsApp"
+      },
+      "placeholders": {
+        "nameOrCompany": "이름 또는 회사명을 입력해 주세요",
+        "whatsapp": "담당자가 더 빠르게 연락할 수 있습니다"
+      },
+      "whatsappPlaceholder": "담당자가 더 빠르게 연락할 수 있습니다",
+      "errors": {
+        "telegram": "Telegram 사용자 정보를 확인할 수 없습니다.",
+        "configuration": "서비스 설정이 누락되었습니다.",
+        "submit": "데이터를 전송하지 못했습니다. 다시 시도해 주세요."
+      }
+    },
+    "final": {
+      "eyebrow": "최종 화면",
+      "title": "신청이 접수되었습니다",
+      "description": "",
+      "timeframe": "담당자가 24시간 이내에 연락드리겠습니다",
+      "conditionsTitle": "협력 조건",
+      "conditionsDescription": "정확한 조건은 주문 수량에 따라 다릅니다",
+      "minimumOrderLabel": "최소 주문",
+      "minimumOrderValue": "500 USD부터",
+      "tierOneLabel": "500–2000 USD 규모",
+      "tierOneValue": "기본 조건",
+      "tierTwoLabel": "2000+ USD 규모",
+      "tierTwoValue": "특별 조건",
+      "socialProofLabel": "다음 지역 유통업체들이 신뢰합니다:",
+      "socialProofLocations": "🇰🇿 알마티 · 🇺🇿 타슈켄트 · 🇰🇬 비슈케크 · 🇹🇲 아슈하바트",
+      "primaryCta": "담당자에게 연락하기",
+      "secondaryCta": "카탈로그로 돌아가기",
+      "summary": {
+        "country": "국가",
+        "intent": "목적",
+        "products": "선택한 제품",
+        "contact": "연락처"
+      }
+    }
+  }
+}

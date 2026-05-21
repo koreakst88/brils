@@ -1,0 +1,193 @@
+{
+  "header": {
+    "languageSwitcher": "Language switcher",
+    "avatarLabel": "User profile"
+  },
+  "products": {
+    "bbCream": {
+      "name": "BRILS BB Cream",
+      "description": "A premium tone-up essential with a polished finish and easy commercial positioning for everyday retail demand.",
+      "benefits": {
+        "one": "Smooth skin tone correction with a natural elegant finish",
+        "two": "Easy hero item for first-time customer introduction",
+        "three": "Clear category fit for shelf display, catalog, and sales scripts"
+      }
+    },
+    "salmonCream": {
+      "name": "Salmon Cream",
+      "description": "A nourishing premium cream designed for recovery, glow positioning, and strong repeat-purchase potential.",
+      "benefits": {
+        "one": "Rich yet comfortable texture with premium skincare perception",
+        "two": "Strong story around recovery, care, and visible glow",
+        "three": "Hero product for B2B presentations and launch bundles"
+      }
+    },
+    "multiBalm": {
+      "name": "Multi Balm",
+      "description": "A versatile skincare format that is simple to explain and practical to promote in partner-led sales.",
+      "benefits": {
+        "one": "Clear use case with fast value communication",
+        "two": "Compact SKU for add-ons and gift-driven bundles",
+        "three": "Visually distinctive product for shelf and messenger promotion"
+      }
+    },
+    "sleepingMask": {
+      "name": "Sleeping Mask",
+      "description": "An overnight care product with premium appeal and an easy-to-understand recovery benefit by morning.",
+      "benefits": {
+        "one": "Strong ritual format for evening-care storytelling",
+        "two": "Fits well into bundles and seasonal offers",
+        "three": "Easy to position as an upgrade product within the line"
+      }
+    },
+    "set": {
+      "name": "BRILS Set",
+      "description": "A bundle offer for fast launch: a ready selection that presents the line as one complete premium system.",
+      "benefits": {
+        "one": "Built as a complete proposal for the first wholesale launch",
+        "two": "Helps present the brand faster and onboard the sales team",
+        "three": "Supports a stronger average order value and brand perception"
+      }
+    }
+  },
+  "screens": {
+    "country": {
+      "eyebrow": "South Korea • export skincare line",
+      "title": "Premium Korean cosmetics for your business",
+      "description": "Choose your country so we can show the most relevant terms and continue your introduction to the BRILS line.",
+      "cta": "Continue",
+      "selectedBadge": "Selected",
+      "confirmation": "Country selected: {country}",
+      "confirmationIdle": "Choose a country to continue",
+      "options": {
+        "kz": "🇰🇿 Kazakhstan",
+        "uz": "🇺🇿 Uzbekistan",
+        "kg": "🇰🇬 Kyrgyzstan",
+        "tm": "🇹🇲 Turkmenistan",
+        "other": "🌐 Other"
+      },
+      "optionHints": {
+        "kz": "Core Central Asian distribution market",
+        "uz": "Fast-growing B2B demand and partner activity",
+        "kg": "Compact market with a clear entry path",
+        "tm": "Dedicated routing for regional requests",
+        "other": "For markets outside the main country list"
+      }
+    },
+    "intent": {
+      "eyebrow": "Step 2",
+      "title": "What are you looking for?",
+      "description": "Choose the main scenario so we can guide you to the right catalog and commercial terms.",
+      "confirmation": "Selected",
+      "options": {
+        "wholesale": {
+          "label": "Wholesale prices & catalog",
+          "hint": "Fast access to the range and terms"
+        },
+        "cooperation": {
+          "label": "Cooperation",
+          "hint": "Discuss the partnership format"
+        },
+        "distribution": {
+          "label": "Distribution",
+          "hint": "Launch sales in your market"
+        },
+        "selection": {
+          "label": "Product selection",
+          "hint": "Build a starter assortment"
+        }
+      }
+    },
+    "products": {
+      "eyebrow": "Step 3",
+      "title": "What are you interested in?",
+      "description": "Choose a few directions to personalize the next catalog screen.",
+      "cta": "Continue",
+      "options": {
+        "cream": "Cream",
+        "serum": "Serum",
+        "sets": "Sets",
+        "full-line": "Full line"
+      }
+    },
+    "catalog": {
+      "eyebrow": "Product line",
+      "title": "4 hero products and one ready-to-sell set",
+      "description": "A compact showcase in one visual language: no filters, no clutter, just the most relevant B2B SKUs.",
+      "productLabel": "Product",
+      "bundleOffer": "Bundle offer",
+      "open": "Open details",
+      "items": {}
+    },
+    "product": {
+      "eyebrow": "Product page",
+      "gallery": "Gallery 3–4 images + video",
+      "cta": "Get wholesale prices",
+      "benefits": {}
+    },
+    "set": {
+      "eyebrow": "BRILS set",
+      "bundle": "Ready solution",
+      "description": "A ready bundle for a polished entry into the BRILS line and a stronger B2B presentation.",
+      "whatsInsideTitle": "What's inside",
+      "whatsInsideItems": {
+        "one": "BB Cream",
+        "two": "Salmon Cream",
+        "three": "Multi Balm",
+        "four": "Sleeping Mask"
+      },
+      "whyTitle": "Why it's a great deal",
+      "whyItems": {
+        "one": "A ready first-order solution without complex SKU selection",
+        "two": "Makes the line easier to present to partners and distributors",
+        "three": "Adds stronger perceived value through a bundle offer format"
+      },
+      "cta": "Get wholesale prices"
+    },
+    "form": {
+      "eyebrow": "Step 6",
+      "title": "Where should we send the terms?",
+      "description": "Leave your business contacts and our manager will prepare relevant wholesale conditions.",
+      "cta": "Submit",
+      "loading": "Submitting...",
+      "fields": {
+        "nameOrCompany": "Name or company",
+        "whatsapp": "WhatsApp"
+      },
+      "placeholders": {
+        "nameOrCompany": "Your name or company",
+        "whatsapp": "So our manager can reach you faster"
+      },
+      "whatsappPlaceholder": "So our manager can reach you faster",
+      "errors": {
+        "telegram": "Telegram user could not be detected.",
+        "configuration": "Service configuration is missing.",
+        "submit": "We could not send your details. Please try again."
+      }
+    },
+    "final": {
+      "eyebrow": "Final screen",
+      "title": "Your request has been received",
+      "description": "",
+      "timeframe": "Our manager will contact you within 24 hours",
+      "conditionsTitle": "Partnership conditions",
+      "conditionsDescription": "Exact conditions depend on order volume",
+      "minimumOrderLabel": "Minimum order",
+      "minimumOrderValue": "from 500 USD",
+      "tierOneLabel": "Volume 500–2000 USD",
+      "tierOneValue": "basic terms",
+      "tierTwoLabel": "Volume 2000+ USD",
+      "tierTwoValue": "special terms",
+      "socialProofLabel": "Trusted by distributors from:",
+      "socialProofLocations": "🇰🇿 Almaty · 🇺🇿 Tashkent · 🇰🇬 Bishkek · 🇹🇲 Ashgabat",
+      "primaryCta": "Contact manager",
+      "secondaryCta": "Back to catalog",
+      "summary": {
+        "country": "Country",
+        "intent": "Intent",
+        "products": "Selected products",
+        "contact": "Contact"
+      }
+    }
+  }
+}

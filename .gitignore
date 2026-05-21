@@ -1,0 +1,15 @@
+node_modules
+dist
+.env
+.env.local
+.env.*.local
+.DS_Store
+.vercel
+.next
+*.tsbuildinfo
+apps/tma/src/**/*.js
+apps/tma/src/**/*.js.map
+apps/tma/src/**/*.d.ts
+apps/tma/vite.config.js
+apps/tma/vite.config.js.map
+apps/tma/vite.config.d.ts

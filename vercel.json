@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "buildCommand": "npm run build --workspace @brils/tma",
+  "outputDirectory": "apps/tma/dist",
+  "framework": null,
+  "functions": {
+    "apps/bot/api/*.ts": {
+      "runtime": "nodejs20.x"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/api/notify",
+      "destination": "/apps/bot/api/notify"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/"
+    }
+  ]
+}
