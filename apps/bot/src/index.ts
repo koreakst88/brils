@@ -13,6 +13,16 @@ if (!token) {
 
 const bot = new Bot<BotContext>(token);
 
+// Ensure the Telegram bottom-right menu button shows bot commands.
+// Commands are configured to be English per the requirement.
+await bot.api.setMyCommands([
+  { command: "start", description: "Start" },
+  { command: "admin", description: "Admin panel" },
+]);
+await bot.api.setChatMenuButton({
+  menu_button: { type: "commands" },
+});
+
 bot.use(rolesMiddleware);
 registerStartHandler(bot);
 registerOwnerHandlers(bot);

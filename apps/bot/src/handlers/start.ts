@@ -5,6 +5,8 @@ import type { BotContext } from "../types/context";
 
 type Locale = "ru" | "en" | "ko";
 
+const ADMIN_PANEL_URL = "https://brils-admin.vercel.app/admin";
+
 function requireEnv(name: string) {
   const value = process.env[name];
 
@@ -16,7 +18,7 @@ function requireEnv(name: string) {
 }
 
 const tmaUrl = requireEnv("VITE_TMA_URL");
-const logoPath = path.resolve(process.cwd(), "assets/logo.png");
+const welcomeImagePath = path.resolve(process.cwd(), "assets/welcome.jpg");
 
 const welcomeContent: Record<
   Locale,
@@ -52,12 +54,17 @@ function resolveLocale(languageCode?: string): Locale {
 }
 
 export function registerStartHandler(bot: Bot<BotContext>) {
+  bot.command("admin", async (ctx) => {
+    const keyboard = new InlineKeyboard().url("Admin Panel", ADMIN_PANEL_URL);
+    await ctx.reply("Open admin panel:", { reply_markup: keyboard });
+  });
+
   bot.command("start", async (ctx) => {
     const locale = resolveLocale(ctx.from?.language_code);
     const content = welcomeContent[locale];
     const keyboard = new InlineKeyboard().webApp(content.button, tmaUrl);
 
-    await ctx.replyWithPhoto(new InputFile(logoPath), {
+    await ctx.replyWithPhoto(new InputFile(welcomeImagePath), {
       caption: content.text,
       reply_markup: keyboard,
     });
