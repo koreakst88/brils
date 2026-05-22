@@ -4,13 +4,19 @@ export type ProductImageSet = {
   info: string;
 };
 
+export type ProductPrice = {
+  currency: "USD";
+  min: number;
+  max: number;
+};
+
 export type ProductItem = {
   id: string;
   slug: string;
   nameKey: string;
   descriptionKey: string;
   benefits: string[];
-  isSet: boolean;
+  price: ProductPrice;
   images: ProductImageSet;
 };
 
@@ -49,6 +55,23 @@ function createProductImages(
 
 export const products: ProductItem[] = [
   {
+    id: "bean-essence",
+    slug: "bean-essence",
+    nameKey: "products.beanEssence.name",
+    descriptionKey: "products.beanEssence.description",
+    benefits: [
+      "products.beanEssence.benefits.one",
+      "products.beanEssence.benefits.two",
+      "products.beanEssence.benefits.three",
+    ],
+    price: {
+      currency: "USD",
+      min: 18,
+      max: 24,
+    },
+    images: createProductImages("bean-essence"),
+  },
+  {
     id: "bb-cream",
     slug: "bb-cream",
     nameKey: "products.bbCream.name",
@@ -58,34 +81,29 @@ export const products: ProductItem[] = [
       "products.bbCream.benefits.two",
       "products.bbCream.benefits.three",
     ],
-    isSet: false,
+    price: {
+      currency: "USD",
+      min: 12,
+      max: 18,
+    },
     images: createProductImages("bb-cream"),
   },
   {
-    id: "salmon-cream",
-    slug: "salmon-cream",
-    nameKey: "products.salmonCream.name",
-    descriptionKey: "products.salmonCream.description",
+    id: "cushion",
+    slug: "cushion",
+    nameKey: "products.cushion.name",
+    descriptionKey: "products.cushion.description",
     benefits: [
-      "products.salmonCream.benefits.one",
-      "products.salmonCream.benefits.two",
-      "products.salmonCream.benefits.three",
+      "products.cushion.benefits.one",
+      "products.cushion.benefits.two",
+      "products.cushion.benefits.three",
     ],
-    isSet: false,
-    images: createProductImages("salmon-cream"),
-  },
-  {
-    id: "multi-balm",
-    slug: "multi-balm",
-    nameKey: "products.multiBalm.name",
-    descriptionKey: "products.multiBalm.description",
-    benefits: [
-      "products.multiBalm.benefits.one",
-      "products.multiBalm.benefits.two",
-      "products.multiBalm.benefits.three",
-    ],
-    isSet: false,
-    images: createProductImages("multi-balm"),
+    price: {
+      currency: "USD",
+      min: 16,
+      max: 23,
+    },
+    images: createProductImages("cushion"),
   },
   {
     id: "sleeping-mask",
@@ -97,24 +115,12 @@ export const products: ProductItem[] = [
       "products.sleepingMask.benefits.two",
       "products.sleepingMask.benefits.three",
     ],
-    isSet: false,
+    price: {
+      currency: "USD",
+      min: 15,
+      max: 22,
+    },
     images: createProductImages("sleeping-mask"),
-  },
-  {
-    id: "set",
-    slug: "set",
-    nameKey: "products.set.name",
-    descriptionKey: "products.set.description",
-    benefits: [
-      "products.set.benefits.one",
-      "products.set.benefits.two",
-      "products.set.benefits.three",
-    ],
-    isSet: true,
-    images: createProductImages("set", {
-      includeImage2: true,
-      infoType: "2",
-    }),
   },
 ];
 

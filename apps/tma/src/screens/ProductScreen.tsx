@@ -9,7 +9,7 @@ export function ProductScreen() {
   const { t } = useTranslation();
   const product = productMap.get(id ?? "bb-cream") ?? productMap.get("bb-cream");
 
-  if (!product || product.isSet) {
+  if (!product) {
     return null;
   }
 
