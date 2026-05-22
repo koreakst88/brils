@@ -33,33 +33,44 @@ export function Layout() {
   }, [location.pathname, navigate]);
 
   useEffect(() => {
-    // iOS Telegram WebView: keep our "100vh" aligned to the *visual* viewport
-    // so inputs/buttons won't be covered by the on-screen keyboard.
+    // Stabilize the app height on iOS Safari/Telegram WebView:
+    // use the layout viewport height (innerHeight), not visualViewport.height.
     const updateAppHeight = () => {
-      const vv = window.visualViewport;
-      const height = Math.round(vv?.height ?? window.innerHeight);
-      document.documentElement.style.setProperty("--app-height", `${height}px`);
-
-      // When iOS keyboard is visible, visualViewport is smaller than innerHeight.
-      // Expose the difference as padding for scroll containers.
-      const inset = Math.max(
-        0,
-        Math.round(window.innerHeight - ((vv?.height ?? window.innerHeight) + (vv?.offsetTop ?? 0))),
-      );
-      document.documentElement.style.setProperty("--keyboard-inset", `${inset}px`);
+      document.documentElement.style.setProperty("--app-height", `${Math.round(window.innerHeight)}px`);
     };
 
     updateAppHeight();
-
-    const vv = window.visualViewport;
-    vv?.addEventListener("resize", updateAppHeight);
-    vv?.addEventListener("scroll", updateAppHeight);
+    window.addEventListener("resize", updateAppHeight);
     window.addEventListener("orientationchange", updateAppHeight);
 
     return () => {
-      vv?.removeEventListener("resize", updateAppHeight);
-      vv?.removeEventListener("scroll", updateAppHeight);
+      window.removeEventListener("resize", updateAppHeight);
       window.removeEventListener("orientationchange", updateAppHeight);
+    };
+  }, []);
+
+  useEffect(() => {
+    // Keyboard handling: compute bottom inset from visualViewport changes,
+    // but do not shrink the whole app container (that causes jumpy layouts in Telegram iOS).
+    const updateKeyboardInset = () => {
+      const vv = window.visualViewport;
+      if (!vv) {
+        document.documentElement.style.setProperty("--keyboard-inset", "0px");
+        return;
+      }
+
+      const inset = Math.max(0, Math.round(window.innerHeight - (vv.height + vv.offsetTop)));
+      document.documentElement.style.setProperty("--keyboard-inset", `${inset}px`);
+    };
+
+    updateKeyboardInset();
+    const vv = window.visualViewport;
+    vv?.addEventListener("resize", updateKeyboardInset);
+    vv?.addEventListener("scroll", updateKeyboardInset);
+
+    return () => {
+      vv?.removeEventListener("resize", updateKeyboardInset);
+      vv?.removeEventListener("scroll", updateKeyboardInset);
     };
   }, []);
 

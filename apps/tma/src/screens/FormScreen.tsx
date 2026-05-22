@@ -63,12 +63,35 @@ export function FormScreen() {
   );
   const [whatsapp, setWhatsapp] = useState(existingLeadData?.whatsapp ?? "");
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const scrollIntoViewInCard = (el: HTMLElement) => {
+    const container =
+      (el.closest(".screen-card") as HTMLElement | null) ||
+      (el.closest(".app-main") as HTMLElement | null);
+
+    if (!container) {
+      el.scrollIntoView?.({ block: "center", behavior: "smooth" });
+      return;
+    }
+
+    const cRect = container.getBoundingClientRect();
+    const eRect = el.getBoundingClientRect();
+
+    const padding = 16;
+    const topLimit = cRect.top + padding;
+    const bottomLimit = cRect.bottom - padding;
+
+    if (eRect.bottom > bottomLimit) {
+      container.scrollTop += eRect.bottom - bottomLimit;
+    } else if (eRect.top < topLimit) {
+      container.scrollTop -= topLimit - eRect.top;
+    }
+  };
+
   const handleInputFocus = (target?: HTMLElement | null) => {
-    window.Telegram?.WebApp?.expand?.();
-    // Delay helps after iOS keyboard animation starts.
-    window.setTimeout(() => {
-      target?.scrollIntoView?.({ block: "center", inline: "nearest", behavior: "smooth" });
-    }, 150);
+    if (!target) return;
+    // Wait for iOS keyboard + Telegram WebView relayout.
+    window.setTimeout(() => scrollIntoViewInCard(target), 350);
   };
 
   const hasValidWhatsapp = getWhatsappDigits(whatsapp).length >= 7;
