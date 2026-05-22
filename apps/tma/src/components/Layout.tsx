@@ -14,9 +14,10 @@ export function Layout() {
     }
 
     const isRootScreen = location.pathname === "/";
+    const isFinalScreen = location.pathname === "/final";
     const handleBack = () => navigate(-1);
 
-    if (isRootScreen) {
+    if (isRootScreen || isFinalScreen) {
       backButton.hide();
       backButton.offClick(handleBack);
       return;
@@ -30,6 +31,29 @@ export function Layout() {
       backButton.hide();
     };
   }, [location.pathname, navigate]);
+
+  useEffect(() => {
+    // iOS Telegram WebView: keep our "100vh" aligned to the *visual* viewport
+    // so inputs/buttons won't be covered by the on-screen keyboard.
+    const updateAppHeight = () => {
+      const vv = window.visualViewport;
+      const height = Math.round(vv?.height ?? window.innerHeight);
+      document.documentElement.style.setProperty("--app-height", `${height}px`);
+    };
+
+    updateAppHeight();
+
+    const vv = window.visualViewport;
+    vv?.addEventListener("resize", updateAppHeight);
+    vv?.addEventListener("scroll", updateAppHeight);
+    window.addEventListener("orientationchange", updateAppHeight);
+
+    return () => {
+      vv?.removeEventListener("resize", updateAppHeight);
+      vv?.removeEventListener("scroll", updateAppHeight);
+      window.removeEventListener("orientationchange", updateAppHeight);
+    };
+  }, []);
 
   return (
     <div className="app-shell">

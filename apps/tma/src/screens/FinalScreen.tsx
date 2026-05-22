@@ -19,6 +19,30 @@ export function FinalScreen() {
     void track("price_view");
   }, []);
 
+  useEffect(() => {
+    const webApp = window.Telegram?.WebApp;
+    const backButton = webApp?.BackButton;
+    const mainButton = webApp?.MainButton;
+
+    // Final step: show "Close" instead of "Back".
+    backButton?.hide?.();
+
+    if (!webApp || !mainButton) {
+      return;
+    }
+
+    const handleClose = () => webApp.close?.();
+
+    mainButton.setText(t("common.close"));
+    mainButton.show();
+    mainButton.onClick(handleClose);
+
+    return () => {
+      mainButton.offClick(handleClose);
+      mainButton.hide();
+    };
+  }, [t]);
+
   return (
     <section className="screen">
       <div className="screen-card">

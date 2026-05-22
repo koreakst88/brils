@@ -63,6 +63,12 @@ export function FormScreen() {
   );
   const [whatsapp, setWhatsapp] = useState(existingLeadData?.whatsapp ?? "");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const handleInputFocus = (target?: HTMLElement | null) => {
+    // Delay helps after iOS keyboard animation starts.
+    window.setTimeout(() => {
+      target?.scrollIntoView?.({ block: "center", inline: "nearest", behavior: "smooth" });
+    }, 150);
+  };
 
   const hasValidWhatsapp = getWhatsappDigits(whatsapp).length >= 7;
   const canSubmit = Boolean(nameOrCompany.trim() && whatsapp.trim() && hasValidWhatsapp);
@@ -184,6 +190,7 @@ export function FormScreen() {
               type="text"
               value={nameOrCompany}
               onChange={(event) => setNameOrCompany(event.target.value)}
+              onFocus={(event) => handleInputFocus(event.currentTarget)}
               placeholder={t("screens.form.placeholders.nameOrCompany")}
             />
           </label>
@@ -193,8 +200,10 @@ export function FormScreen() {
             <input
               className="text-input"
               type="tel"
+              inputMode="tel"
               value={whatsapp}
               onChange={(event) => setWhatsapp(event.target.value)}
+              onFocus={(event) => handleInputFocus(event.currentTarget)}
               placeholder={t("screens.form.placeholders.whatsapp")}
             />
             <small className="field-hint">{t("screens.form.whatsappPlaceholder")}</small>

@@ -15,8 +15,16 @@ declare global {
     setHeaderColor?: (color: string) => void;
     setBackgroundColor?: (color: string) => void;
     disableVerticalSwipes?: () => void;
+    close?: () => void;
     initDataUnsafe?: TelegramWebAppInitDataUnsafe;
     BackButton?: {
+      show: () => void;
+      hide: () => void;
+      onClick: (callback: () => void) => void;
+      offClick: (callback: () => void) => void;
+    };
+    MainButton?: {
+      setText: (text: string) => void;
       show: () => void;
       hide: () => void;
       onClick: (callback: () => void) => void;

@@ -3,6 +3,9 @@
     "languageSwitcher": "Переключение языка",
     "avatarLabel": "Профиль пользователя"
   },
+  "common": {
+    "close": "Закрыть"
+  },
   "products": {
     "beanEssence": {
       "name": "Bean Essence",

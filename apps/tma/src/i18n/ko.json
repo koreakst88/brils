@@ -3,6 +3,9 @@
     "languageSwitcher": "언어 전환",
     "avatarLabel": "사용자 프로필"
   },
+  "common": {
+    "close": "닫기"
+  },
   "products": {
     "beanEssence": {
       "name": "빈 에센스",
