@@ -14,3 +14,4 @@ apps/tma/src/**/*.d.ts
 apps/tma/vite.config.js
 apps/tma/vite.config.js.map
 apps/tma/vite.config.d.ts
+.env*

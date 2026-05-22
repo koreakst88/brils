@@ -2,15 +2,15 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import { useTranslation } from "../i18n";
-import { supabase } from "../lib/supabase";
-import { Shield, MessageSquare, AlertCircle } from "lucide-react";
+import { Shield, AlertCircle, LogIn } from "lucide-react";
 
 export function Login() {
-  const { user, loading } = useAuth();
+  const { user, loading, login } = useAuth();
   const { t } = useTranslation();
   const navigate = useNavigate();
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [authLoading, setAuthLoading] = useState(false);
+  const [telegramId, setTelegramId] = useState("");
 
   useEffect(() => {
     if (user && !loading) {
@@ -18,34 +18,33 @@ export function Login() {
     }
   }, [user, loading, navigate]);
 
-  const handleTelegramLogin = async () => {
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!telegramId) return;
+
     setAuthLoading(true);
     setErrorMsg(null);
     try {
-      const { error } = await supabase.auth.signInWithOAuth({
-        provider: "telegram" as any,
-        options: {
-          redirectTo: `${window.location.origin}/admin/dashboard`,
-        },
-      });
-      if (error) throw error;
+      await login(parseInt(telegramId, 10));
     } catch (err: any) {
       console.error("Login error:", err);
-      setErrorMsg(err.message || "Failed to initiate Telegram login");
+      setErrorMsg(err.message || "Failed to login");
+    } finally {
       setAuthLoading(false);
     }
   };
 
-  const handleDemoLogin = (role: "admin" | "owner") => {
-    localStorage.setItem(
-      "demo_user",
-      JSON.stringify({
-        id: "demo-admin-id",
-        email: "admin@demo.local",
-        role,
-      })
-    );
-    window.location.href = "/admin/dashboard";
+  const handleDemoLogin = async (id: number) => {
+    setAuthLoading(true);
+    setErrorMsg(null);
+    try {
+      await login(id);
+    } catch (err: any) {
+      console.error("Demo login error:", err);
+      setErrorMsg(err.message || "Failed to login");
+    } finally {
+      setAuthLoading(false);
+    }
   };
 
   if (loading) {
@@ -79,41 +78,56 @@ export function Login() {
           </div>
         )}
 
-        <div className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div>
+            <label htmlFor="telegramId" className="block text-sm font-medium text-slate-400 mb-1.5">
+              Telegram ID
+            </label>
+            <input
+              id="telegramId"
+              type="number"
+              value={telegramId}
+              onChange={(e) => setTelegramId(e.target.value)}
+              placeholder="e.g. 888888"
+              className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-white transition-colors"
+              required
+            />
+          </div>
+
           <button
-            onClick={handleTelegramLogin}
-            disabled={authLoading}
-            className="w-full bg-[#54a9eb] hover:bg-[#4399db] disabled:bg-slate-800 text-white font-bold py-3.5 px-4 rounded-xl transition-all shadow-md flex items-center justify-center gap-3 text-sm"
+            type="submit"
+            disabled={authLoading || !telegramId}
+            className="w-full bg-white hover:bg-slate-200 disabled:bg-slate-800 disabled:text-slate-500 text-slate-900 font-bold py-3.5 px-4 rounded-xl transition-all shadow-md flex items-center justify-center gap-3 text-sm mt-2"
           >
-            <MessageSquare size={18} />
-            <span>{authLoading ? t("login.connecting") : t("login.telegram_button")}</span>
+            <LogIn size={18} />
+            <span>{authLoading ? t("login.connecting") : "Войти"}</span>
           </button>
+        </form>
 
-          <div className="relative my-6 pt-2">
-            <div className="absolute inset-0 flex items-center" aria-hidden="true">
-              <div className="w-full border-t border-slate-800"></div>
-            </div>
-            <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-slate-900 px-2 text-slate-500 font-bold tracking-wider">
-                DEVELOPMENT HELPERS
-              </span>
-            </div>
+        <div className="relative my-6 pt-2">
+          <div className="absolute inset-0 flex items-center" aria-hidden="true">
+            <div className="w-full border-t border-slate-800"></div>
           </div>
+          <div className="relative flex justify-center text-xs uppercase">
+            <span className="bg-slate-900 px-2 text-slate-500 font-bold tracking-wider">
+              TEST ACCOUNTS
+            </span>
+          </div>
+        </div>
 
-          <div className="grid grid-cols-2 gap-3">
-            <button
-              onClick={() => handleDemoLogin("admin")}
-              className="bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold py-3 px-4 rounded-xl transition-all border border-slate-700 hover:border-slate-600 text-xs shadow-sm"
-            >
-              Sign In as Admin
-            </button>
-            <button
-              onClick={() => handleDemoLogin("owner")}
-              className="bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold py-3 px-4 rounded-xl transition-all border border-slate-700 hover:border-slate-600 text-xs shadow-sm"
-            >
-              Sign In as Owner
-            </button>
-          </div>
+        <div className="grid grid-cols-2 gap-3">
+          <button
+            onClick={() => handleDemoLogin(888888)}
+            className="bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold py-3 px-4 rounded-xl transition-all border border-slate-700 hover:border-slate-600 text-xs shadow-sm"
+          >
+            System Owner (888888)
+          </button>
+          <button
+            onClick={() => handleDemoLogin(999999)}
+            className="bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold py-3 px-4 rounded-xl transition-all border border-slate-700 hover:border-slate-600 text-xs shadow-sm"
+          >
+            System Admin (999999)
+          </button>
         </div>
 
         <div className="flex items-center justify-center gap-1.5 text-slate-500 text-xs">

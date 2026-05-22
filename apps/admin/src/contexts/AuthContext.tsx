@@ -1,20 +1,20 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { supabase } from "../lib/supabase";
 import { useAdminStore } from "../store/useAdminStore";
-import { User } from "@supabase/supabase-js";
 
 interface AuthContextType {
-  user: User | null;
-  role: "user" | "admin" | "owner" | null;
+  user: any | null;
+  role: "admin" | "owner" | null;
   loading: boolean;
-  signOut: () => Promise<void>;
+  login: (telegramId: number) => Promise<void>;
+  signOut: () => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
-  const [user, setUser] = useState<User | null>(null);
-  const [role, setRole] = useState<"user" | "admin" | "owner" | null>(null);
+  const [user, setUser] = useState<any | null>(null);
+  const [role, setRole] = useState<"admin" | "owner" | null>(null);
   const [loading, setLoading] = useState(true);
 
   const setLanguage = useAdminStore((state) => state.setLanguage);
@@ -25,119 +25,52 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   }, [role, setLanguage]);
 
-  const fetchUserRole = async (currentUser: User) => {
-    try {
-      // Get telegram_id from metadata or sub (which is provider UID)
-      const tgIdRaw = currentUser.user_metadata?.telegram_id || currentUser.user_metadata?.sub;
-      const telegramId = tgIdRaw ? parseInt(tgIdRaw, 10) : null;
-
-      if (!telegramId || isNaN(telegramId)) {
-        console.warn("No valid telegram_id found in user metadata");
-        setRole(null);
-        return;
-      }
-
-      const { data, error } = await supabase
-        .from("users")
-        .select("role")
-        .eq("telegram_id", telegramId)
-        .single();
-
-      if (error) {
-        console.error("Error fetching user role from database:", error);
-        setRole(null);
-        return;
-      }
-
-      const userRole = data?.role as "user" | "admin" | "owner";
-      setRole(userRole || null);
-    } catch (err) {
-      console.error("Unexpected error fetching user role:", err);
-      setRole(null);
-    }
-  };
-
   useEffect(() => {
-    // Initial fetch of current user
-    const initAuth = async () => {
+    const initAuth = () => {
       try {
-        if (import.meta.env.DEV) {
-          const demoUserJson = localStorage.getItem("demo_user");
-          if (demoUserJson) {
-            const parsed = JSON.parse(demoUserJson);
-            setUser({
-              id: parsed.id,
-              email: parsed.email,
-              user_metadata: { role: parsed.role },
-              app_metadata: {},
-              aud: "authenticated",
-              created_at: new Date().toISOString(),
-            } as any);
-            setRole(parsed.role);
-            setLoading(false);
-            return;
-          }
-        }
-
-        const { data: { user: currentUser } } = await supabase.auth.getUser();
-        setUser(currentUser);
-        if (currentUser) {
-          await fetchUserRole(currentUser);
+        const saved = localStorage.getItem("brils_admin_user");
+        if (saved) {
+          const parsedUser = JSON.parse(saved);
+          setUser(parsedUser);
+          setRole(parsedUser.role);
         }
       } catch (err) {
-        console.error("Error initializing auth:", err);
+        console.error("Failed to parse saved user", err);
       } finally {
         setLoading(false);
       }
     };
-
     initAuth();
-
-    // Listen for auth state changes
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
-      if (import.meta.env.DEV && localStorage.getItem("demo_user")) {
-        return;
-      }
-
-      const currentUser = session?.user || null;
-      setUser(currentUser);
-      if (currentUser) {
-        setLoading(true);
-        await fetchUserRole(currentUser);
-        setLoading(false);
-      } else {
-        setRole(null);
-        setLoading(false);
-      }
-    });
-
-    return () => {
-      subscription.unsubscribe();
-    };
   }, []);
 
-  const signOut = async () => {
-    if (import.meta.env.DEV && localStorage.getItem("demo_user")) {
-      localStorage.removeItem("demo_user");
-      setUser(null);
-      setRole(null);
-      return;
+  const login = async (telegramId: number) => {
+    const { data, error } = await supabase
+      .from("users")
+      .select("id, telegram_id, name, role, language_code")
+      .eq("telegram_id", telegramId)
+      .single();
+
+    if (error || !data) {
+      throw new Error("User not found");
     }
-    
-    setLoading(true);
-    try {
-      await supabase.auth.signOut();
-    } catch (err) {
-      console.error("Error during sign out:", err);
-    } finally {
-      setUser(null);
-      setRole(null);
-      setLoading(false);
+
+    if (data.role !== "admin" && data.role !== "owner") {
+      throw new Error("Access denied: You must be an admin or owner");
     }
+
+    localStorage.setItem("brils_admin_user", JSON.stringify(data));
+    setUser(data);
+    setRole(data.role as "admin" | "owner");
+  };
+
+  const signOut = () => {
+    localStorage.removeItem("brils_admin_user");
+    setUser(null);
+    setRole(null);
   };
 
   return (
-    <AuthContext.Provider value={{ user, role, loading, signOut }}>
+    <AuthContext.Provider value={{ user, role, loading, login, signOut }}>
       {children}
     </AuthContext.Provider>
   );
@@ -150,3 +83,4 @@ export function useAuth() {
   }
   return context;
 }
+
