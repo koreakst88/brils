@@ -7,7 +7,6 @@ import { FormScreen } from "./screens/FormScreen";
 import { IntentScreen } from "./screens/IntentScreen";
 import { ProductInterestScreen } from "./screens/ProductInterestScreen";
 import { ProductScreen } from "./screens/ProductScreen";
-import { SetScreen } from "./screens/SetScreen";
 
 export function App() {
   return (
@@ -19,7 +18,6 @@ export function App() {
           <Route path="/products" element={<ProductInterestScreen />} />
           <Route path="/catalog" element={<CatalogScreen />} />
           <Route path="/product/:id" element={<ProductScreen />} />
-          <Route path="/set/:id" element={<SetScreen />} />
           <Route path="/form" element={<FormScreen />} />
           <Route path="/final" element={<FinalScreen />} />
           <Route path="*" element={<Navigate replace to="/" />} />

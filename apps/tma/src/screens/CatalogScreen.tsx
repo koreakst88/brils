@@ -6,13 +6,6 @@ import { track } from "../lib/amplitude";
 
 export function CatalogScreen() {
   const { t } = useTranslation();
-  const sortedProducts = [...products].sort((left, right) => {
-    if (left.isSet === right.isSet) {
-      return 0;
-    }
-
-    return left.isSet ? 1 : -1;
-  });
 
   useEffect(() => {
     void track("catalog_view");
@@ -26,20 +19,16 @@ export function CatalogScreen() {
         <p className="screen-description">{t("screens.catalog.description")}</p>
 
         <div className="catalog-grid">
-          {sortedProducts.map((product) => (
+          {products.map((product) => (
             <Link
               key={product.id}
-              to={product.isSet ? `/set/${product.id}` : `/product/${product.id}`}
-              className={`catalog-card ${product.isSet ? "catalog-card--set" : ""}`}
+              to={`/product/${product.id}`}
+              className="catalog-card"
             >
               <div className="catalog-card__image">
                 <img src={product.images.main} alt={t(product.nameKey)} />
               </div>
-              <span className="catalog-card__type">
-                {product.isSet
-                  ? t("screens.catalog.bundleOffer")
-                  : t("screens.catalog.productLabel")}
-              </span>
+              <span className="catalog-card__type">{t("screens.catalog.productLabel")}</span>
               <strong>{t(product.nameKey)}</strong>
             </Link>
           ))}

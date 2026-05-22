@@ -34,7 +34,9 @@ export function CountryScreen() {
               <button
                 key={item.code}
                 type="button"
-                className={`choice-card country-card ${isSelected ? "is-selected" : ""}`}
+                className={`choice-card country-card ${
+                  item.code === "Other" ? "country-card--wide" : ""
+                } ${isSelected ? "is-selected" : ""}`}
                 onClick={() => {
                   setCountry(item.code);
                   void track("country_selected", { country: item.code });

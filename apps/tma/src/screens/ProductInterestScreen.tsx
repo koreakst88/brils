@@ -3,11 +3,18 @@ import { useTranslation } from "../i18n";
 import { track } from "../lib/amplitude";
 import { useAppStore } from "../store/useAppStore";
 
-const products = ["cream", "serum", "sets", "full-line"] as const;
+const products = [
+  "essence",
+  "bbCream",
+  "cushion",
+  "sleepingMask",
+  "full-line",
+] as const;
 const productIcons: Record<(typeof products)[number], string> = {
-  cream: "🧴",
-  serum: "💧",
-  sets: "🎁",
+  essence: "🫘",
+  bbCream: "🧴",
+  cushion: "💎",
+  sleepingMask: "🌙",
   "full-line": "✨",
 };
 

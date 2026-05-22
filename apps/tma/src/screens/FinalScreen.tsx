@@ -1,7 +1,12 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { products } from "../data/products";
 import { useTranslation } from "../i18n";
 import { track } from "../lib/amplitude";
+
+function formatPriceRange(min: number, max: number) {
+  return `$${min} - $${max}`;
+}
 
 export function FinalScreen() {
   const { t } = useTranslation();
@@ -39,6 +44,17 @@ export function FinalScreen() {
                 <span>{t("screens.final.tierTwoLabel")}</span>
                 <strong>{t("screens.final.tierTwoValue")}</strong>
               </div>
+            </div>
+
+            <div className="info-card info-card--section">
+              <strong>{t("screens.final.estimatedPricesTitle")}</strong>
+              <ul className="section-list">
+                {products.map((product) => (
+                  <li key={product.id}>
+                    {t(product.nameKey)}: {formatPriceRange(product.price.min, product.price.max)}
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </section>

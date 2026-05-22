@@ -4,6 +4,15 @@
     "avatarLabel": "User profile"
   },
   "products": {
+    "beanEssence": {
+      "name": "Bean Essence",
+      "description": "A fermented bean essence with a smooth-skin payoff, glow appeal, and a strong demo-friendly sales story.",
+      "benefits": {
+        "one": "Distinctive texture and fast visible effect during product presentation",
+        "two": "Fits premium skincare positioning and first-touch brand introduction",
+        "three": "Strong SKU for shelf display, recommendations, and content storytelling"
+      }
+    },
     "bbCream": {
       "name": "BRILS BB Cream",
       "description": "A premium tone-up essential with a polished finish and easy commercial positioning for everyday retail demand.",
@@ -13,40 +22,22 @@
         "three": "Clear category fit for shelf display, catalog, and sales scripts"
       }
     },
-    "salmonCream": {
-      "name": "Salmon Cream",
-      "description": "A nourishing premium cream designed for recovery, glow positioning, and strong repeat-purchase potential.",
+    "cushion": {
+      "name": "Collagen Cushion",
+      "description": "A premium complexion format with familiar customer appeal and strong repeat-purchase potential.",
       "benefits": {
-        "one": "Rich yet comfortable texture with premium skincare perception",
-        "two": "Strong story around recovery, care, and visible glow",
-        "three": "Hero product for B2B presentations and launch bundles"
-      }
-    },
-    "multiBalm": {
-      "name": "Multi Balm",
-      "description": "A versatile skincare format that is simple to explain and practical to promote in partner-led sales.",
-      "benefits": {
-        "one": "Clear use case with fast value communication",
-        "two": "Compact SKU for add-ons and gift-driven bundles",
-        "three": "Visually distinctive product for shelf and messenger promotion"
+        "one": "Recognizable format with quick before-and-after demonstration value",
+        "two": "Fits daily makeup routines and retail-oriented promotion",
+        "three": "Visually strong product for market launch and content-driven sales"
       }
     },
     "sleepingMask": {
-      "name": "Sleeping Mask",
+      "name": "Collagen Sleeping Mask",
       "description": "An overnight care product with premium appeal and an easy-to-understand recovery benefit by morning.",
       "benefits": {
         "one": "Strong ritual format for evening-care storytelling",
-        "two": "Fits well into bundles and seasonal offers",
+        "two": "Works well as a standalone SKU and in curated care selections",
         "three": "Easy to position as an upgrade product within the line"
-      }
-    },
-    "set": {
-      "name": "BRILS Set",
-      "description": "A bundle offer for fast launch: a ready selection that presents the line as one complete premium system.",
-      "benefits": {
-        "one": "Built as a complete proposal for the first wholesale launch",
-        "two": "Helps present the brand faster and onboard the sales team",
-        "three": "Supports a stronger average order value and brand perception"
       }
     }
   },
@@ -60,11 +51,11 @@
       "confirmation": "Country selected: {country}",
       "confirmationIdle": "Choose a country to continue",
       "options": {
-        "kz": "🇰🇿 Kazakhstan",
-        "uz": "🇺🇿 Uzbekistan",
-        "kg": "🇰🇬 Kyrgyzstan",
-        "tm": "🇹🇲 Turkmenistan",
-        "other": "🌐 Other"
+        "kz": "Kazakhstan",
+        "uz": "Uzbekistan",
+        "kg": "Kyrgyzstan",
+        "tm": "Turkmenistan",
+        "other": "Other"
       },
       "optionHints": {
         "kz": "Core Central Asian distribution market",
@@ -100,22 +91,22 @@
     },
     "products": {
       "eyebrow": "Step 3",
-      "title": "What are you interested in?",
-      "description": "Choose a few directions to personalize the next catalog screen.",
+      "title": "Which products interest you most?",
+      "description": "Choose a few directions so our manager can better understand your interest in the BRILS line.",
       "cta": "Continue",
       "options": {
-        "cream": "Cream",
-        "serum": "Serum",
-        "sets": "Sets",
+        "essence": "Essence",
+        "bbCream": "BB Cream",
+        "cushion": "Cushion",
+        "sleepingMask": "Sleeping mask",
         "full-line": "Full line"
       }
     },
     "catalog": {
       "eyebrow": "Product line",
-      "title": "4 hero products and one ready-to-sell set",
+      "title": "4 key products for your business",
       "description": "A compact showcase in one visual language: no filters, no clutter, just the most relevant B2B SKUs.",
       "productLabel": "Product",
-      "bundleOffer": "Bundle offer",
       "open": "Open details",
       "items": {}
     },
@@ -124,25 +115,6 @@
       "gallery": "Gallery 3–4 images + video",
       "cta": "Get wholesale prices",
       "benefits": {}
-    },
-    "set": {
-      "eyebrow": "BRILS set",
-      "bundle": "Ready solution",
-      "description": "A ready bundle for a polished entry into the BRILS line and a stronger B2B presentation.",
-      "whatsInsideTitle": "What's inside",
-      "whatsInsideItems": {
-        "one": "BB Cream",
-        "two": "Salmon Cream",
-        "three": "Multi Balm",
-        "four": "Sleeping Mask"
-      },
-      "whyTitle": "Why it's a great deal",
-      "whyItems": {
-        "one": "A ready first-order solution without complex SKU selection",
-        "two": "Makes the line easier to present to partners and distributors",
-        "three": "Adds stronger perceived value through a bundle offer format"
-      },
-      "cta": "Get wholesale prices"
     },
     "form": {
       "eyebrow": "Step 6",
@@ -178,6 +150,7 @@
       "tierOneValue": "basic terms",
       "tierTwoLabel": "Volume 2000+ USD",
       "tierTwoValue": "special terms",
+      "estimatedPricesTitle": "Estimated wholesale prices",
       "socialProofLabel": "Trusted by distributors from:",
       "socialProofLocations": "🇰🇿 Almaty · 🇺🇿 Tashkent · 🇰🇬 Bishkek · 🇹🇲 Ashgabat",
       "primaryCta": "Contact manager",
