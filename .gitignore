@@ -10,6 +10,7 @@ dist
 apps/tma/src/**/*.js
 apps/tma/src/**/*.js.map
 apps/tma/src/**/*.d.ts
+!apps/tma/src/global.d.ts
 apps/tma/vite.config.js
 apps/tma/vite.config.js.map
 apps/tma/vite.config.d.ts
