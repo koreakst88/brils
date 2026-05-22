@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "buildCommand": "npm run build --workspace @brils/tma && rm -rf dist && cp -R apps/tma/dist dist",
+  "buildCommand": "npm run build --workspace @brils/tma && node scripts/vercel-copy-dist.cjs",
   "outputDirectory": "dist",
   "framework": null,
   "functions": {
