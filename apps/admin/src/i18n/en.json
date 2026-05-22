@@ -1,0 +1,95 @@
+{
+  "nav": {
+    "dashboard": "Dashboard",
+    "leads": "Leads",
+    "distributors": "Distributors",
+    "orders": "Orders",
+    "inventory": "Inventory",
+    "pricing": "Pricing",
+    "activity": "Activity",
+    "logout": "Logout"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "subtitle": "General overview of Brils key metrics",
+    "total_sales": "Total Sales",
+    "leads_count": "Total Leads",
+    "active_distributors": "Active Distributors",
+    "pending_orders": "Pending Orders",
+    "recent_activity": "Recent Activity",
+    "view_all": "View All",
+    "vs_last_month": "vs last month",
+    "vs_last_week": "vs last week",
+    "sales_analytics": "Sales Analytics",
+    "sales_amount": "Sales Amount",
+    "active_distributors_description": "active partners",
+    "no_activity": "No recent activity",
+    "error_loading": "Error loading data",
+    "refresh_data": "Refresh Data"
+  },
+  "leads": {
+    "title": "Leads",
+    "subtitle": "Manage potential clients and inquiries",
+    "name": "Name",
+    "company": "Company",
+    "status": "Status",
+    "created": "Created At",
+    "action": "Action"
+  },
+  "distributors": {
+    "title": "Distributors",
+    "subtitle": "List of registered partners",
+    "region": "Region",
+    "contact": "Contact",
+    "orders_count": "Orders"
+  },
+  "orders": {
+    "title": "Orders",
+    "subtitle": "Order history and statuses",
+    "order_id": "Order ID",
+    "amount": "Amount",
+    "delivery": "Delivery"
+  },
+  "inventory": {
+    "title": "Inventory",
+    "subtitle": "Product stock and availability",
+    "product_name": "Product Name",
+    "sku": "SKU",
+    "stock": "Stock",
+    "status_in_stock": "In Stock",
+    "status_low_stock": "Low Stock",
+    "status_out_of_stock": "Out of Stock"
+  },
+  "pricing": {
+    "title": "Pricing",
+    "subtitle": "Configure price tiers and discounts",
+    "base_price": "Base Price",
+    "distributor_price": "Distributor Price",
+    "update_price": "Update Price"
+  },
+  "activity": {
+    "title": "Activity Log",
+    "subtitle": "History of system events",
+    "event": "Event",
+    "user": "User",
+    "time": "Time"
+  },
+  "common": {
+    "search": "Search...",
+    "filter": "Filter",
+    "reset": "Reset",
+    "loading": "Loading...",
+    "no_data": "No data available",
+    "welcome": "Welcome",
+    "save": "Save",
+    "cancel": "Cancel",
+    "notifications": "Notifications",
+    "readonly": "Read-only",
+    "profile": "Profile",
+    "filter_all": "All",
+    "filter_overdue": "Overdue",
+    "filter_leads": "New Leads",
+    "no_notifications": "No notifications",
+    "mark_read": "Mark all as read"
+  }
+}

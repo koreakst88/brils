@@ -1,0 +1,95 @@
+{
+  "nav": {
+    "dashboard": "대시보드",
+    "leads": "리드 관리",
+    "distributors": "유통업체",
+    "orders": "주문 관리",
+    "inventory": "재고 현황",
+    "pricing": "가격 책정",
+    "activity": "작업 로그",
+    "logout": "로그아웃"
+  },
+  "dashboard": {
+    "title": "대시보드",
+    "subtitle": "Brils 주요 지표 요약",
+    "total_sales": "총 매출액",
+    "leads_count": "총 리드 수",
+    "active_distributors": "활성 유통사",
+    "pending_orders": "대기 중인 주문",
+    "recent_activity": "최근 활동 내역",
+    "view_all": "전체 보기",
+    "vs_last_month": "지난달 대비",
+    "vs_last_week": "지난주 대비",
+    "sales_analytics": "매출 분석",
+    "sales_amount": "매출 금액",
+    "active_distributors_description": "활성 파트너",
+    "no_activity": "최근 활동 없음",
+    "error_loading": "데이터 로드 오류",
+    "refresh_data": "데이터 새로고침"
+  },
+  "leads": {
+    "title": "리드 관리",
+    "subtitle": "잠재 고객 및 문의 내역 관리",
+    "name": "이름",
+    "company": "회사명",
+    "status": "상태",
+    "created": "생성일",
+    "action": "관리"
+  },
+  "distributors": {
+    "title": "유통업체",
+    "subtitle": "등록된 파트너 및 대리점 목록",
+    "region": "지역",
+    "contact": "연락처",
+    "orders_count": "주문 건수"
+  },
+  "orders": {
+    "title": "주문 관리",
+    "subtitle": "주문 내역 및 처리 상태",
+    "order_id": "주문 번호",
+    "amount": "주문 금액",
+    "delivery": "배송 정보"
+  },
+  "inventory": {
+    "title": "재고 현황",
+    "subtitle": "제품 재고 실시간 관리",
+    "product_name": "제품명",
+    "sku": "품목 코드",
+    "stock": "재고량",
+    "status_in_stock": "재고 있음",
+    "status_low_stock": "재고 부족",
+    "status_out_of_stock": "품절"
+  },
+  "pricing": {
+    "title": "가격 책정",
+    "subtitle": "가격 등급 및 할인 조건 설정",
+    "base_price": "기본가",
+    "distributor_price": "파트너 우대가",
+    "update_price": "가격 업데이트"
+  },
+  "activity": {
+    "title": "작업 로그",
+    "subtitle": "시스템 변경 및 작업 기록",
+    "event": "작업 내용",
+    "user": "작업자",
+    "time": "시간"
+  },
+  "common": {
+    "search": "검색어 입력...",
+    "filter": "필터 적용",
+    "reset": "초기화",
+    "loading": "불러오는 중...",
+    "no_data": "데이터가 없습니다",
+    "welcome": "환영합니다",
+    "save": "저장",
+    "cancel": "취소",
+    "notifications": "알림",
+    "readonly": "읽기 전용",
+    "profile": "프로필",
+    "filter_all": "전체",
+    "filter_overdue": "납기 초과",
+    "filter_leads": "신규 리드",
+    "no_notifications": "새로운 알림이 없습니다",
+    "mark_read": "모두 읽음으로 표시"
+  }
+}

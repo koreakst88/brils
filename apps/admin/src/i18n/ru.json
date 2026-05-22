@@ -1,0 +1,95 @@
+{
+  "nav": {
+    "dashboard": "Панель управления",
+    "leads": "Лиды",
+    "distributors": "Дистрибьюторы",
+    "orders": "Заказы",
+    "inventory": "Остатки",
+    "pricing": "Прайсинг",
+    "activity": "Активность",
+    "logout": "Выйти"
+  },
+  "dashboard": {
+    "title": "Панель управления",
+    "subtitle": "Общий обзор показателей Brils",
+    "total_sales": "Общие продажи",
+    "leads_count": "Всего лидов",
+    "active_distributors": "Активные дистрибьюторы",
+    "pending_orders": "Заказы в обработке",
+    "recent_activity": "Последняя активность",
+    "view_all": "Показать все",
+    "vs_last_month": "по сравнению с прошлым месяцем",
+    "vs_last_week": "по сравнению с прошлой неделей",
+    "sales_analytics": "Аналитика продаж",
+    "sales_amount": "Сумма продаж",
+    "active_distributors_description": "активные партнеры",
+    "no_activity": "Нет недавней активности",
+    "error_loading": "Ошибка при загрузке данных",
+    "refresh_data": "Обновить данные"
+  },
+  "leads": {
+    "title": "Лиды",
+    "subtitle": "Управление потенциальными клиентами",
+    "name": "Имя",
+    "company": "Компания",
+    "status": "Статус",
+    "created": "Создан",
+    "action": "Действие"
+  },
+  "distributors": {
+    "title": "Дистрибьюторы",
+    "subtitle": "Список зарегистрированных партнеров",
+    "region": "Регион",
+    "contact": "Контакты",
+    "orders_count": "Заказы"
+  },
+  "orders": {
+    "title": "Заказы",
+    "subtitle": "История и статус заказов",
+    "order_id": "ID Заказа",
+    "amount": "Сумма",
+    "delivery": "Доставка"
+  },
+  "inventory": {
+    "title": "Склад / Инвентарь",
+    "subtitle": "Наличие и остатки товаров",
+    "product_name": "Название товара",
+    "sku": "Артикул",
+    "stock": "В наличии",
+    "status_in_stock": "В наличии",
+    "status_low_stock": "Мало",
+    "status_out_of_stock": "Нет на складе"
+  },
+  "pricing": {
+    "title": "Ценообразование",
+    "subtitle": "Настройка тарифов и скидок",
+    "base_price": "Базовая цена",
+    "distributor_price": "Цена для партнеров",
+    "update_price": "Обновить цену"
+  },
+  "activity": {
+    "title": "Журнал активности",
+    "subtitle": "История системных событий",
+    "event": "Событие",
+    "user": "Пользователь",
+    "time": "Время"
+  },
+  "common": {
+    "search": "Поиск...",
+    "filter": "Фильтр",
+    "reset": "Сбросить",
+    "loading": "Загрузка...",
+    "no_data": "Нет данных",
+    "welcome": "Добро пожаловать",
+    "save": "Сохранить",
+    "cancel": "Отмена",
+    "notifications": "Уведомления",
+    "readonly": "Только чтение",
+    "profile": "Профиль",
+    "filter_all": "Все",
+    "filter_overdue": "Просрочки",
+    "filter_leads": "Новые лиды",
+    "no_notifications": "Нет новых уведомлений",
+    "mark_read": "Отметить все как прочитанные"
+  }
+}
