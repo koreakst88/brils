@@ -18,7 +18,6 @@ async function fetchPricing(): Promise<PricingRow[]> {
   const { data, error } = await supabase
     .from("pricing")
     .select("*")
-    .eq("is_deleted", false)
     .order("product", { ascending: true });
 
   if (error) throw error;
@@ -86,13 +85,13 @@ export function Pricing() {
 
       {isError ? (
         <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex items-center justify-between gap-4">
-          <span className="text-sm font-semibold text-slate-600">Failed to load pricing.</span>
+          <span className="text-sm font-semibold text-slate-600">{t("pricing.failed_to_load")}</span>
           <button
             type="button"
             onClick={() => refetch()}
             className="px-3 py-1.5 rounded-lg text-xs font-semibold border bg-slate-900 text-white border-slate-900 shadow-sm"
           >
-            Retry
+            {t("common.retry")}
           </button>
         </div>
       ) : null}
@@ -100,9 +99,9 @@ export function Pricing() {
       <div className="bg-amber-50 border border-amber-200 text-amber-800 p-4 rounded-xl flex items-start gap-3">
         <ShieldAlert className="text-amber-600 flex-shrink-0 mt-0.5" size={20} />
         <div>
-          <h4 className="font-bold text-sm">Pricing Warning Policy</h4>
+          <h4 className="font-bold text-sm">{t("pricing.warning_title")}</h4>
           <p className="text-xs text-amber-700 mt-1 leading-relaxed">
-            Changes to pricing take effect instantly.
+            {t("pricing.warning_text")}
           </p>
         </div>
       </div>
@@ -125,16 +124,16 @@ export function Pricing() {
           <table className="w-full text-left border-collapse">
             <thead>
               <tr className="bg-slate-50 border-b border-slate-200 text-slate-500 text-xs font-bold uppercase tracking-wider">
-                <th className="px-6 py-4">Product</th>
+                <th className="px-6 py-4">{t("pricing.product_col")}</th>
                 <th className="px-6 py-4">{t("pricing.base_price")}</th>
-                <th className="px-6 py-4 text-right">Actions</th>
+                <th className="px-6 py-4 text-right">{t("pricing.actions_col")}</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100 text-sm">
               {isLoading ? (
                 <tr>
                   <td colSpan={3} className="px-6 py-12 text-center text-slate-400 font-medium">
-                    Loading...
+                    {t("common.loading")}
                   </td>
                 </tr>
               ) : filteredPricing.length > 0 ? (
@@ -142,7 +141,7 @@ export function Pricing() {
                   const isEditing = editingProduct === row.product;
                   return (
                     <tr key={row.id} className="hover:bg-slate-50 transition-colors">
-                      <td className="px-6 py-4 font-semibold text-slate-900">{row.product}</td>
+                      <td className="px-6 py-4 font-semibold text-slate-900">{t("products." + row.product, { defaultValue: row.product })}</td>
                       <td className="px-6 py-4">
                         {isEditing ? (
                           <div className="relative w-32">
@@ -187,7 +186,7 @@ export function Pricing() {
                             }`}
                           >
                             <Edit3 size={12} />
-                            Edit
+                            {t("pricing.edit")}
                           </button>
                         )}
                       </td>

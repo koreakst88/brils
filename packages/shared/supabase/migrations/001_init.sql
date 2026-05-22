@@ -3,7 +3,9 @@ create extension if not exists pgcrypto;
 create table if not exists public.users (
   id uuid primary key default gen_random_uuid(),
   telegram_id bigint not null unique,
-  name text,
+  username text,
+  name text not null,
+  language_code text,
   role text not null default 'user' check (role in ('user', 'admin', 'owner')),
   created_at timestamptz not null default now()
 );

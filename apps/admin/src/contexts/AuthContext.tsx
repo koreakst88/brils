@@ -61,6 +61,24 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     // Initial fetch of current user
     const initAuth = async () => {
       try {
+        if (import.meta.env.DEV) {
+          const demoUserJson = localStorage.getItem("demo_user");
+          if (demoUserJson) {
+            const parsed = JSON.parse(demoUserJson);
+            setUser({
+              id: parsed.id,
+              email: parsed.email,
+              user_metadata: { role: parsed.role },
+              app_metadata: {},
+              aud: "authenticated",
+              created_at: new Date().toISOString(),
+            } as any);
+            setRole(parsed.role);
+            setLoading(false);
+            return;
+          }
+        }
+
         const { data: { user: currentUser } } = await supabase.auth.getUser();
         setUser(currentUser);
         if (currentUser) {
@@ -77,6 +95,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
     // Listen for auth state changes
     const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
+      if (import.meta.env.DEV && localStorage.getItem("demo_user")) {
+        return;
+      }
+
       const currentUser = session?.user || null;
       setUser(currentUser);
       if (currentUser) {
@@ -95,6 +117,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const signOut = async () => {
+    if (import.meta.env.DEV && localStorage.getItem("demo_user")) {
+      localStorage.removeItem("demo_user");
+      setUser(null);
+      setRole(null);
+      return;
+    }
+    
     setLoading(true);
     try {
       await supabase.auth.signOut();

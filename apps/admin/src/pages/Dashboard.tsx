@@ -75,22 +75,20 @@ const fetchDashboardData = async (): Promise<DashboardData> => {
   ] = await Promise.all([
     supabase
       .from("orders")
-      .select("total_amount.sum()")
-      .gte("created_at", startOfCurrentMonth)
-      .eq("is_deleted", false),
+      .select("total_amount")
+      .gte("created_at", startOfCurrentMonth),
     supabase
       .from("orders")
-      .select("total_amount.sum()")
+      .select("total_amount")
       .gte("created_at", startOfLastMonth)
-      .lt("created_at", startOfCurrentMonth)
-      .eq("is_deleted", false),
+      .lt("created_at", startOfCurrentMonth),
     supabase.from("leads").select("id", { count: "exact", head: true }).gte("created_at", sevenDaysAgo),
     supabase.from("leads").select("id", { count: "exact", head: true }).gte("created_at", fourteenDaysAgo).lt("created_at", sevenDaysAgo),
     supabase.from("users").select("id", { count: "exact", head: true }).eq("role", "user"),
     supabase.from("users").select("id", { count: "exact", head: true }).eq("role", "user").lt("created_at", startOfCurrentMonth),
-    supabase.from("orders").select("id", { count: "exact", head: true }).in("status", ["new", "confirmed", "processing"]).eq("is_deleted", false),
-    supabase.from("orders").select("id", { count: "exact", head: true }).in("status", ["new", "confirmed", "processing"]).lt("created_at", sevenDaysAgo).eq("is_deleted", false),
-    supabase.from("orders").select("created_at, total_amount").gte("created_at", thirtyDaysAgo).eq("is_deleted", false).order("created_at", { ascending: true }),
+    supabase.from("orders").select("id", { count: "exact", head: true }).in("status", ["new", "confirmed", "processing"]),
+    supabase.from("orders").select("id", { count: "exact", head: true }).in("status", ["new", "confirmed", "processing"]).lt("created_at", sevenDaysAgo),
+    supabase.from("orders").select("created_at, total_amount").gte("created_at", thirtyDaysAgo).order("created_at", { ascending: true }),
     supabase.from("activity_log").select("id, action, entity_type, entity_id, created_at, user_id").order("created_at", { ascending: false }).limit(5),
   ]);
 
@@ -105,8 +103,8 @@ const fetchDashboardData = async (): Promise<DashboardData> => {
   if (chartOrdersRes.error) throw chartOrdersRes.error;
   if (activitiesRes.error) throw activitiesRes.error;
 
-  const totalSales = Number((currentMonthSalesRes.data?.[0] as any)?.sum ?? 0);
-  const lastSales = Number((lastMonthSalesRes.data?.[0] as any)?.sum ?? 0);
+  const totalSales = (currentMonthSalesRes.data ?? []).reduce((sum, order: any) => sum + Number(order.total_amount || 0), 0);
+  const lastSales = (lastMonthSalesRes.data ?? []).reduce((sum, order: any) => sum + Number(order.total_amount || 0), 0);
   const salesChange = lastSales > 0 ? ((totalSales - lastSales) / lastSales) * 100 : 0;
 
   const leadsCount = currentLeadsRes.count || 0;
@@ -219,16 +217,19 @@ function getActivityIcon(entityType: string) {
   }
 }
 
-function formatActivityMessage(act: any, currentLang: string): string {
+function formatActivityMessage(act: any, currentLang: string, t: any): string {
   const { action, entity_type, user_name } = act;
   const target = user_name || "System";
+  const translatedAction = entity_type === "order"
+    ? t(`orders.status.${action.toLowerCase()}`, { defaultValue: action })
+    : action;
 
   if (currentLang === "ru") {
     switch (entity_type) {
       case "lead":
         return `${target} создал новый лид`;
       case "order":
-        return `${target} изменил статус заказа на "${action}"`;
+        return `${target} изменил статус заказа на "${translatedAction}"`;
       case "inventory":
         return `Система: низкий остаток на складе`;
       case "distributor":
@@ -236,14 +237,14 @@ function formatActivityMessage(act: any, currentLang: string): string {
       case "pricing":
         return `${target} обновил цены на продукты`;
       default:
-        return `${target} совершил действие ${action} для ${entity_type}`;
+        return `${target} совершил действие ${translatedAction} для ${entity_type}`;
     }
   } else if (currentLang === "ko") {
     switch (entity_type) {
       case "lead":
         return `${target}님이 새 리드를 생성했습니다`;
       case "order":
-        return `${target}님이 주문 상태를 "${action}"(으)로 변경했습니다`;
+        return `${target}님이 주문 상태를 "${translatedAction}"(으)로 변경했습니다`;
       case "inventory":
         return `시스템: 재고 부족 경고`;
       case "distributor":
@@ -251,14 +252,14 @@ function formatActivityMessage(act: any, currentLang: string): string {
       case "pricing":
         return `${target}님이 제품 가격을 업데이트했습니다`;
       default:
-        return `${target}님이 ${entity_type}에 ${action} 작업을 수행했습니다`;
+        return `${target}님이 ${entity_type}에 ${translatedAction} 작업을 수행했습니다`;
     }
   } else {
     switch (entity_type) {
       case "lead":
         return `${target} created a new lead`;
       case "order":
-        return `${target} updated order status to "${action}"`;
+        return `${target} updated order status to "${translatedAction}"`;
       case "inventory":
         return `System: low stock warning`;
       case "distributor":
@@ -266,7 +267,7 @@ function formatActivityMessage(act: any, currentLang: string): string {
       case "pricing":
         return `${target} updated product pricing`;
       default:
-        return `${target} performed ${action} on ${entity_type}`;
+        return `${target} performed ${translatedAction} on ${entity_type}`;
     }
   }
 }
@@ -333,7 +334,7 @@ export function Dashboard() {
         </div>
         <h3 className="text-xl font-bold text-slate-900 mb-2">{t("common.no_data")}</h3>
         <p className="text-slate-500 text-sm max-w-sm mb-6">
-          Welcome to your new Brils dashboard! Once you start registering leads or orders, the key metrics and sales curves will automatically show up here.
+          {t("dashboard.no_data_description")}
         </p>
         <button
           onClick={() => refetch()}
@@ -402,10 +403,10 @@ export function Dashboard() {
             onChange={(e) => setFilters({ dateRange: e.target.value })}
             className="bg-white border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold text-slate-600 focus:outline-none focus:ring-2 focus:ring-slate-950 transition-all cursor-pointer"
           >
-            <option value="today">{currentLang === "ru" ? "Сегодня" : currentLang === "ko" ? "오늘" : "Today"}</option>
-            <option value="week">{currentLang === "ru" ? "На этой неделе" : currentLang === "ko" ? "이번 주" : "This Week"}</option>
-            <option value="month">{currentLang === "ru" ? "В этом месяце" : currentLang === "ko" ? "이번 달" : "This Month"}</option>
-            <option value="all">{currentLang === "ru" ? "За все время" : currentLang === "ko" ? "전체 기간" : "All Time"}</option>
+            <option value="today">{t("dashboard.date_filter_today")}</option>
+            <option value="week">{t("dashboard.date_filter_week")}</option>
+            <option value="month">{t("dashboard.date_filter_month")}</option>
+            <option value="all">{t("dashboard.date_filter_all")}</option>
           </select>
         </div>
       </div>
@@ -463,7 +464,7 @@ export function Dashboard() {
             <div className="flex items-center justify-between mb-6">
               <h4 className="font-bold text-slate-900 text-lg">{t("dashboard.sales_analytics")}</h4>
               <span className="text-xs text-indigo-600 bg-indigo-50 border border-indigo-100/50 px-3 py-1 rounded-full font-bold">
-                {currentLang === "ru" ? "В реальном времени" : currentLang === "ko" ? "실시간 데이터" : "Live Data"}
+                {t("dashboard.live_data")}
               </span>
             </div>
 
@@ -542,10 +543,10 @@ export function Dashboard() {
                         </div>
                         <div className="flex-1 min-w-0">
                           <span className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">
-                            {act.entity_type}
+                            {t("nav." + act.entity_type.toLowerCase(), { defaultValue: act.entity_type }).toUpperCase()}
                           </span>
                           <p className="text-sm font-semibold text-slate-800 leading-snug mt-0.5 break-words">
-                            {formatActivityMessage(act, currentLang)}
+                            {formatActivityMessage(act, currentLang, t)}
                           </p>
                           <span className="text-[11px] text-slate-400 font-medium block mt-1">
                             {formatRelativeTime(act.created_at, currentLang)}

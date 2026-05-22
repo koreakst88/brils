@@ -45,7 +45,9 @@ export const rolesMiddleware: MiddlewareFn<BotContext> = async (ctx, next) => {
       method: "POST",
       body: JSON.stringify({
         telegram_id: telegramId,
-        name: ctx.from?.first_name ?? null,
+        username: ctx.from?.username ?? null,
+        name: ctx.from?.first_name || "User",
+        language_code: ctx.from?.language_code ?? null,
         role: "user",
       }),
     });

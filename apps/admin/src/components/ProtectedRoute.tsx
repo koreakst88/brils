@@ -1,17 +1,19 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
+import { useTranslation } from "../i18n";
 import { ShieldAlert, LogOut } from "lucide-react";
 
 export function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { user, role, loading, signOut } = useAuth();
+  const { t } = useTranslation();
 
   if (loading) {
     return (
       <div className="min-h-screen bg-slate-50 text-slate-900 flex items-center justify-center font-sans">
         <div className="text-center space-y-4">
           <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-slate-950 mx-auto" />
-          <p className="text-slate-500 text-sm font-semibold">Verifying security clearances...</p>
+          <p className="text-slate-500 text-sm font-semibold">{t("protected.loading")}</p>
         </div>
       </div>
     );
@@ -32,15 +34,15 @@ export function ProtectedRoute({ children }: { children: React.ReactNode }) {
           </div>
 
           <div className="space-y-2">
-            <h2 className="text-2xl font-bold tracking-tight text-white font-sans">Access Denied</h2>
+            <h2 className="text-2xl font-bold tracking-tight text-white font-sans">{t("protected.access_denied")}</h2>
             <p className="text-slate-400 text-sm leading-relaxed">
-              Your account does not have sufficient permissions to view the management console. This dashboard is restricted to administrator and owner accounts.
+              {t("protected.access_denied_desc")}
             </p>
           </div>
 
           {user.email && (
             <div className="bg-slate-800/40 p-3.5 rounded-xl border border-slate-800 text-xs font-mono text-slate-400 truncate">
-              Identity: {user.email} (Role: {role || "none"})
+              {t("protected.identity")}: {user.email} ({t("protected.role")}: {role || "none"})
             </div>
           )}
 
@@ -49,7 +51,7 @@ export function ProtectedRoute({ children }: { children: React.ReactNode }) {
             className="w-full bg-red-600 hover:bg-red-500 text-white font-bold py-3.5 rounded-xl transition-all shadow-md flex items-center justify-center gap-2 text-sm"
           >
             <LogOut size={16} />
-            <span>Sign Out & Switch Account</span>
+            <span>{t("protected.sign_out_switch")}</span>
           </button>
         </div>
       </div>

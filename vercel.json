@@ -1,21 +1,18 @@
 {
   "version": 2,
-  "buildCommand": "npm run build --workspace @brils/tma && (node scripts/vercel-copy-dist.cjs || node ../../scripts/vercel-copy-dist.cjs)",
-  "outputDirectory": "dist",
-  "framework": null,
-  "functions": {
-    "apps/bot/api/*.ts": {
-      "runtime": "nodejs20.x"
+  "builds": [
+    {
+      "src": "apps/admin/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"
+      }
     }
-  },
-  "rewrites": [
+  ],
+  "routes": [
     {
-      "source": "/api/notify",
-      "destination": "/apps/bot/api/notify"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/"
+      "src": "/(.*)",
+      "dest": "/apps/admin/dist/$1"
     }
   ]
 }

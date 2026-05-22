@@ -73,7 +73,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
         <div className="p-4 border-t border-slate-100 bg-amber-50/50">
           <div className="bg-amber-50 border border-amber-200 text-amber-800 p-3 rounded-xl flex items-center gap-2.5 text-xs font-semibold">
             <Eye size={16} className="text-amber-600 flex-shrink-0" />
-            <span className="leading-normal">Read-Only Mode Active</span>
+            <span className="leading-normal">{t("common.readonly_banner")}</span>
           </div>
         </div>
       )}

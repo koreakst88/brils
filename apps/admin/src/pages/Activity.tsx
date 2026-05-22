@@ -110,13 +110,13 @@ export function Activity() {
 
       {isError ? (
         <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex items-center justify-between gap-4">
-          <span className="text-sm font-semibold text-slate-600">Failed to load activity log.</span>
+          <span className="text-sm font-semibold text-slate-600">{t("activity.failed_to_load")}</span>
           <button
             type="button"
             onClick={() => refetch()}
             className="px-3 py-1.5 rounded-lg text-xs font-semibold border bg-slate-900 text-white border-slate-900 shadow-sm"
           >
-            Retry
+            {t("common.retry")}
           </button>
         </div>
       ) : null}
@@ -144,7 +144,7 @@ export function Activity() {
                   : "bg-white text-slate-600 border-slate-200 hover:bg-slate-50"
               }`}
             >
-              {type.toUpperCase()}
+              {type === "all" ? t("common.filter_all") : t("nav." + type, { defaultValue: type.toUpperCase() }).toUpperCase()}
             </button>
           ))}
         </div>
@@ -152,7 +152,7 @@ export function Activity() {
 
       <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden divide-y divide-slate-100">
         {isLoading ? (
-          <div className="py-12 text-center text-slate-400 font-medium">Loading...</div>
+          <div className="py-12 text-center text-slate-400 font-medium">{t("common.loading")}</div>
         ) : filteredLogs.length > 0 ? (
           filteredLogs.map((log) => {
             const severity = inferSeverity(log.action);
@@ -168,7 +168,7 @@ export function Activity() {
                   <div className="flex flex-wrap items-center gap-2">
                     <span className="font-bold text-slate-900 text-sm">{log.actor_name}</span>
                     <span className="text-[10px] px-2 py-0.5 rounded bg-slate-200 text-slate-600 font-bold uppercase tracking-wider">
-                      {log.entity_type}
+                      {t("nav." + log.entity_type.toLowerCase(), { defaultValue: log.entity_type }).toUpperCase()}
                     </span>
                     <span className="text-slate-400 font-mono text-[10px] ml-auto">{log.id.slice(0, 8)}</span>
                   </div>

@@ -22,14 +22,20 @@ export function useTranslation() {
   const language = useAdminStore((state) => state.language);
   const setLanguage = useAdminStore((state) => state.setLanguage);
 
-  const t = (key: string): string => {
+  const t = (key: string, options?: { defaultValue?: string }): string => {
     const dictionary = dictionaries[language] as Record<string, unknown>;
     const fallbackDictionary = dictionaries.ru as Record<string, unknown>;
 
     const value =
       getNestedValue(dictionary, key) ?? getNestedValue(fallbackDictionary, key);
 
-    return typeof value === "string" ? value : key;
+    if (typeof value === "string") {
+      return value;
+    }
+    if (options && typeof options.defaultValue === "string") {
+      return options.defaultValue;
+    }
+    return key;
   };
 
   return {

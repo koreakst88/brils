@@ -1,0 +1,3 @@
+- name: "Daily payment alerts"
+  schedule: "0 10 * * *"  # Каждый день в 10:00 UTC
+  function: payment-alerts
