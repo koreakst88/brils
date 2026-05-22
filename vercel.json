@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "buildCommand": "npm run build --workspace @brils/tma",
-  "outputDirectory": "apps/tma/dist",
+  "buildCommand": "npm run build --workspace @brils/tma && rm -rf dist && cp -R apps/tma/dist dist",
+  "outputDirectory": "dist",
   "framework": null,
   "functions": {
     "apps/bot/api/*.ts": {
