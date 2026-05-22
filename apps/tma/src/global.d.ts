@@ -1,30 +1,34 @@
-interface TelegramWebAppUser {
-  id?: number;
-}
+export {};
 
-interface TelegramWebAppInitDataUnsafe {
-  user?: TelegramWebAppUser;
-}
+declare global {
+  interface TelegramWebAppUser {
+    id?: number;
+  }
 
-interface TelegramWebApp {
-  ready?: () => void;
-  expand?: () => void;
-  setHeaderColor?: (color: string) => void;
-  setBackgroundColor?: (color: string) => void;
-  disableVerticalSwipes?: () => void;
-  initDataUnsafe?: TelegramWebAppInitDataUnsafe;
-  BackButton?: {
-    show: () => void;
-    hide: () => void;
-    onClick: (callback: () => void) => void;
-    offClick: (callback: () => void) => void;
-  };
-}
+  interface TelegramWebAppInitDataUnsafe {
+    user?: TelegramWebAppUser;
+  }
 
-interface TelegramNamespace {
-  WebApp?: TelegramWebApp;
-}
+  interface TelegramWebApp {
+    ready?: () => void;
+    expand?: () => void;
+    setHeaderColor?: (color: string) => void;
+    setBackgroundColor?: (color: string) => void;
+    disableVerticalSwipes?: () => void;
+    initDataUnsafe?: TelegramWebAppInitDataUnsafe;
+    BackButton?: {
+      show: () => void;
+      hide: () => void;
+      onClick: (callback: () => void) => void;
+      offClick: (callback: () => void) => void;
+    };
+  }
 
-interface Window {
-  Telegram?: TelegramNamespace;
+  interface TelegramNamespace {
+    WebApp?: TelegramWebApp;
+  }
+
+  interface Window {
+    Telegram?: TelegramNamespace;
+  }
 }
