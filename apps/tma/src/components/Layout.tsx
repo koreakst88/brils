@@ -39,6 +39,14 @@ export function Layout() {
       const vv = window.visualViewport;
       const height = Math.round(vv?.height ?? window.innerHeight);
       document.documentElement.style.setProperty("--app-height", `${height}px`);
+
+      // When iOS keyboard is visible, visualViewport is smaller than innerHeight.
+      // Expose the difference as padding for scroll containers.
+      const inset = Math.max(
+        0,
+        Math.round(window.innerHeight - ((vv?.height ?? window.innerHeight) + (vv?.offsetTop ?? 0))),
+      );
+      document.documentElement.style.setProperty("--keyboard-inset", `${inset}px`);
     };
 
     updateAppHeight();

@@ -22,26 +22,11 @@ export function FinalScreen() {
   useEffect(() => {
     const webApp = window.Telegram?.WebApp;
     const backButton = webApp?.BackButton;
-    const mainButton = webApp?.MainButton;
 
-    // Final step: show "Close" instead of "Back".
+    // Final step: show Telegram's default "Close" (top-left), not "Back".
+    // We only need to hide the BackButton here.
     backButton?.hide?.();
-
-    if (!webApp || !mainButton) {
-      return;
-    }
-
-    const handleClose = () => webApp.close?.();
-
-    mainButton.setText(t("common.close"));
-    mainButton.show();
-    mainButton.onClick(handleClose);
-
-    return () => {
-      mainButton.offClick(handleClose);
-      mainButton.hide();
-    };
-  }, [t]);
+  }, []);
 
   return (
     <section className="screen">

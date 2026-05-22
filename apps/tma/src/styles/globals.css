@@ -14,6 +14,7 @@
   --shadow-soft: 0 24px 70px rgba(88, 67, 49, 0.12);
   --shadow-card: 0 18px 40px rgba(88, 67, 49, 0.1);
   --app-height: 100dvh;
+  --keyboard-inset: 0px;
 }
 
 * {
@@ -199,6 +200,7 @@ a {
 
 .app-main {
   padding-top: 0.75rem;
+  padding-bottom: calc(0.75rem + var(--keyboard-inset));
   flex: 1;
   min-height: 0;
   display: flex;

@@ -64,6 +64,7 @@ export function FormScreen() {
   const [whatsapp, setWhatsapp] = useState(existingLeadData?.whatsapp ?? "");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const handleInputFocus = (target?: HTMLElement | null) => {
+    window.Telegram?.WebApp?.expand?.();
     // Delay helps after iOS keyboard animation starts.
     window.setTimeout(() => {
       target?.scrollIntoView?.({ block: "center", inline: "nearest", behavior: "smooth" });
