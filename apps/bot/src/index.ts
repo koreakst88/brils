@@ -1,8 +1,8 @@
 import { Bot } from "grammy";
-import { registerAdminHandlers } from "./handlers/admin";
-import { registerOwnerHandlers } from "./handlers/owner";
-import { rolesMiddleware } from "./middleware/roles";
-import { registerStartHandler } from "./handlers/start";
+import { registerAdminHandlers } from "./handlers/admin.js";
+import { registerOwnerHandlers } from "./handlers/owner.js";
+import { rolesMiddleware } from "./middleware/roles.js";
+import { registerStartHandler } from "./handlers/start.js";
 import type { BotContext } from "./types/context";
 
 const token = process.env.BOT_TOKEN;

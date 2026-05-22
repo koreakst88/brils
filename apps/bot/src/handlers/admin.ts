@@ -1,5 +1,5 @@
 import type { Bot } from "grammy";
-import { supabaseRequest } from "../lib/supabase";
+import { supabaseRequest } from "../lib/supabase.js";
 import type { BotContext } from "../types/context";
 
 type LeadRow = {

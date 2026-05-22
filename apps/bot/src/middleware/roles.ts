@@ -1,5 +1,5 @@
 import type { MiddlewareFn } from "grammy";
-import { supabaseRequest } from "../lib/supabase";
+import { supabaseRequest } from "../lib/supabase.js";
 import type { BotContext } from "../types/context";
 import type { User, UserRole } from "../types/shared";
 

@@ -4,7 +4,7 @@ import {
   getLeadStats,
   getRecentLeads,
   getRecentOrders,
-} from "./admin";
+} from "./admin.js";
 import type { BotContext } from "../types/context";
 
 const ACCESS_DENIED = "접근이 거부되었습니다";
