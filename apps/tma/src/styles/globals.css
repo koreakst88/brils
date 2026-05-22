@@ -200,11 +200,10 @@ a {
 
 .app-main {
   padding-top: 0.75rem;
-  padding-bottom: calc(0.75rem + var(--keyboard-inset));
   flex: 1;
   min-height: 0;
   display: flex;
-  overflow-y: auto;
+  overflow: hidden;
   overscroll-behavior: contain;
 }
 
@@ -221,6 +220,7 @@ a {
   flex-direction: column;
   gap: 0.9rem;
   padding: 1rem;
+  padding-bottom: calc(1rem + var(--keyboard-inset));
   border: 1px solid var(--color-line);
   border-radius: 1.7rem;
   background:
