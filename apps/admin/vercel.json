@@ -1,5 +1,0 @@
-{
-  "buildCommand": "cd ../.. && npm install && npm run build --workspace @brils/admin",
-  "outputDirectory": "dist",
-  "installCommand": "cd ../.. && npm install"
-}
