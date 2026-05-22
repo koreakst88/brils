@@ -9,6 +9,8 @@
   "scripts": {
     "dev:tma": "npm run dev --workspace @brils/tma",
     "dev:bot": "npm run dev --workspace @brils/bot",
+    "start": "npm run start --workspace @brils/bot",
+    "build:bot": "npm run build --workspace @brils/bot",
     "build": "npm run build --workspaces",
     "typecheck": "npm run typecheck --workspaces"
   }
