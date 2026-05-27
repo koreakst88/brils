@@ -1,7 +1,7 @@
 {
   "buildCommand": "npm run build --workspace @brils/admin",
   "outputDirectory": "apps/admin/dist",
-  "installCommand": "npm install",
+  "installCommand": "npm install --workspaces --include-workspace-root",
   "framework": "vite",
   "rewrites": [
     {
