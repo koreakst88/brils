@@ -1,4 +1,0 @@
-{
-  "buildCommand": "npm run build --workspace @brils/admin",
-  "outputDirectory": "apps/admin/dist"
-}
