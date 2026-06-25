@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useTranslation } from "../i18n";
 
 const languages = [
@@ -8,6 +9,10 @@ const languages = [
 
 export function Header() {
   const { language, setLanguage, t } = useTranslation();
+
+  useEffect(() => {
+    document.documentElement.lang = language;
+  }, [language]);
 
   return (
     <header className="app-header">

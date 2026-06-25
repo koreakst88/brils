@@ -9,46 +9,46 @@
   "products": {
     "beanEssence": {
       "name": "빈 에센스",
-      "description": "발효 콩 성분을 담아 피부 결, 윤기, 첫인상 전달력이 좋은 에센스 제품입니다.",
+      "description": "8종 히알루론산을 담은 가벼운 에센스로 끈적임 없이 다층 보습을 돕습니다.",
       "benefits": {
-        "one": "데모 시 바로 전달하기 좋은 텍스처와 시각적 효과",
-        "two": "프리미엄 스킨케어 포지셔닝과 브랜드 입문 제안에 적합",
-        "three": "매대, 추천 판매, 콘텐츠 소개에 모두 강한 SKU"
+        "one": "8종 히알루론산",
+        "two": "끈적임 없는 다층 보습",
+        "three": "데일리 스킨케어용 가벼운 텍스처"
       }
     },
     "bbCream": {
       "name": "BRILS BB 크림",
-      "description": "정돈된 피부 표현과 판매 설명이 쉬운 프리미엄 톤업 베이스 제품입니다.",
+      "description": "SPF50+ PA++++ 콜라겐 BB 크림으로 자연스러운 커버와 은은한 광채를 제공합니다. #21, #23 컬러.",
       "benefits": {
-        "one": "무겁지 않으면서도 자연스럽고 균일한 피부 표현",
-        "two": "브랜드 입문용 hero item으로 제안하기 쉬운 제품",
-        "three": "매대, 카탈로그, 상담 스크립트에 모두 잘 맞는 카테고리"
+        "one": "SPF50+ PA++++",
+        "two": "자연스러운 커버와 은은한 광채",
+        "three": "#21, #23 두 가지 컬러"
       }
     },
     "cushion": {
       "name": "콜라겐 쿠션",
-      "description": "익숙한 메이크업 포맷에 프리미엄 감도를 더한 쿠션 제품으로 반복 구매 제안이 쉬운 SKU입니다.",
+      "description": "SPF50+ PA++++ 쿠션 팩트로 Powder Stabilization System을 적용해 가볍고 윤기 있는 커버를 돕습니다. #21, #23 컬러.",
       "benefits": {
-        "one": "고객이 익숙한 포맷으로 결과를 빠르게 보여주기 좋음",
-        "two": "데일리 메이크업과 리테일 판매 흐름에 잘 맞음",
-        "three": "시장 런칭과 콘텐츠 판매에 모두 잘 보이는 제품"
+        "one": "SPF50+ PA++++",
+        "two": "Powder Stabilization System",
+        "three": "가볍고 윤기 있는 커버, #21/#23"
       }
     },
     "sleepingMask": {
       "name": "콜라겐 슬리핑 마스크",
-      "description": "다음 날 아침 회복 효과를 직관적으로 전달할 수 있는 프리미엄 나이트 케어 제품입니다.",
+      "description": "나이아신아마이드, 아데노신, D-Panthenol Recovery Complex를 담은 슬리핑 마스크로 수면 중 피부 케어를 돕습니다.",
       "benefits": {
-        "one": "이브닝 루틴 스토리텔링에 적합한 형식",
-        "two": "단독 SKU와 큐레이션 제안 모두에 잘 어울림",
-        "three": "라인 내 업그레이드 제품으로 포지셔닝하기 쉬움"
+        "one": "나이아신아마이드와 아데노신",
+        "two": "D-Panthenol Recovery Complex",
+        "three": "수면 중 피부 케어 포맷"
       }
     }
   },
   "screens": {
     "country": {
-      "eyebrow": "대한민국 • 수출용 스킨케어 라인",
-      "title": "비즈니스를 위한 프리미엄 한국 화장품",
-      "description": "국가를 선택하시면 보다 적합한 조건을 안내하고 BRILS 라인 소개를 자연스럽게 이어갈 수 있습니다.",
+      "eyebrow": "프리미엄 K-Beauty 브랜드",
+      "title": "도매 파트너를 위한 BRILS",
+      "description": "귀하의 지역 판매 런칭을 위해 준비된 공식 한국 스킨케어 및 베이스 메이크업 라인입니다.",
       "cta": "계속하기",
       "selectedBadge": "선택됨",
       "confirmation": "선택한 국가: {country}",
@@ -71,7 +71,7 @@
     "intent": {
       "eyebrow": "2단계",
       "title": "어떤 목적이 있으신가요?",
-      "description": "가장 적합한 카탈로그와 조건 안내를 위해 주요 목적을 선택해 주세요.",
+      "description": "담당자가 적합한 정보를 준비할 수 있도록 문의 목적을 선택해 주세요.",
       "confirmation": "선택됨",
       "options": {
         "wholesale": {
@@ -94,8 +94,8 @@
     },
     "products": {
       "eyebrow": "3단계",
-      "title": "어떤 제품에 관심이 있으신가요?",
-      "description": "담당자가 관심 제품을 더 잘 이해할 수 있도록 몇 가지 제품 방향을 선택해 주세요.",
+      "title": "검토할 제품을 선택해 주세요",
+      "description": "관심 있는 BRILS 제품을 선택해 주세요. 전체 라인도 선택할 수 있습니다.",
       "cta": "계속하기",
       "options": {
         "essence": "에센스",
@@ -108,7 +108,7 @@
     "catalog": {
       "eyebrow": "제품 라인업",
       "title": "비즈니스를 위한 핵심 제품 4종",
-      "description": "필터 없이, 과한 정보 없이, B2B 대화에 필요한 핵심 SKU만 담은 컴팩트한 카탈로그입니다.",
+      "description": "도매 파트너를 위한 공식 BRILS 라인업: 출시 준비가 완료된 4가지 제품입니다.",
       "productLabel": "제품",
       "open": "상세 보기",
       "items": {}
@@ -122,7 +122,7 @@
     "form": {
       "eyebrow": "6단계",
       "title": "조건을 어디로 보내드릴까요?",
-      "description": "비즈니스 연락처를 남겨주시면 담당자가 적합한 도매 조건을 준비합니다.",
+      "description": "비즈니스 연락처를 남겨주시면 담당자가 문의에 맞는 도매 조건을 준비합니다.",
       "cta": "제출하기",
       "loading": "전송 중...",
       "fields": {
@@ -144,7 +144,7 @@
       "eyebrow": "최종 화면",
       "title": "신청이 접수되었습니다",
       "description": "",
-      "timeframe": "담당자가 24시간 이내에 연락드리겠습니다",
+      "timeframe": "담당자가 연락드려 공급 조건을 안내합니다",
       "conditionsTitle": "협력 조건",
       "conditionsDescription": "정확한 조건은 주문 수량에 따라 다릅니다",
       "minimumOrderLabel": "최소 주문",

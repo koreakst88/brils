@@ -9,46 +9,46 @@
   "products": {
     "beanEssence": {
       "name": "Bean Essence",
-      "description": "A fermented bean essence with a smooth-skin payoff, glow appeal, and a strong demo-friendly sales story.",
+      "description": "A lightweight essence with 8 types of hyaluronic acid for multi-level hydration without a sticky feel.",
       "benefits": {
-        "one": "Distinctive texture and fast visible effect during product presentation",
-        "two": "Fits premium skincare positioning and first-touch brand introduction",
-        "three": "Strong SKU for shelf display, recommendations, and content storytelling"
+        "one": "8 types of hyaluronic acid",
+        "two": "Multi-level hydration without stickiness",
+        "three": "Light texture for daily skincare"
       }
     },
     "bbCream": {
       "name": "BRILS BB Cream",
-      "description": "A premium tone-up essential with a polished finish and easy commercial positioning for everyday retail demand.",
+      "description": "A collagen BB cream with SPF50+ PA++++, natural coverage, and a soft glow. Available in shades #21 and #23.",
       "benefits": {
-        "one": "Smooth skin tone correction with a natural elegant finish",
-        "two": "Easy hero item for first-time customer introduction",
-        "three": "Clear category fit for shelf display, catalog, and sales scripts"
+        "one": "SPF50+ PA++++",
+        "two": "Natural coverage with a soft glow",
+        "three": "Two shades: #21 and #23"
       }
     },
     "cushion": {
       "name": "Collagen Cushion",
-      "description": "A premium complexion format with familiar customer appeal and strong repeat-purchase potential.",
+      "description": "A cushion pact with SPF50+ PA++++ and Powder Stabilization System for light radiant coverage. Shades #21 and #23.",
       "benefits": {
-        "one": "Recognizable format with quick before-and-after demonstration value",
-        "two": "Fits daily makeup routines and retail-oriented promotion",
-        "three": "Visually strong product for market launch and content-driven sales"
+        "one": "SPF50+ PA++++",
+        "two": "Powder Stabilization System",
+        "three": "Light radiant coverage, shades #21 and #23"
       }
     },
     "sleepingMask": {
       "name": "Collagen Sleeping Mask",
-      "description": "An overnight care product with premium appeal and an easy-to-understand recovery benefit by morning.",
+      "description": "A sleeping mask with niacinamide, adenosine, and D-Panthenol Recovery Complex for skincare during sleep.",
       "benefits": {
-        "one": "Strong ritual format for evening-care storytelling",
-        "two": "Works well as a standalone SKU and in curated care selections",
-        "three": "Easy to position as an upgrade product within the line"
+        "one": "Niacinamide and adenosine",
+        "two": "D-Panthenol Recovery Complex",
+        "three": "Overnight skincare format"
       }
     }
   },
   "screens": {
     "country": {
-      "eyebrow": "South Korea • export skincare line",
-      "title": "Premium Korean cosmetics for your business",
-      "description": "Choose your country so we can show the most relevant terms and continue your introduction to the BRILS line.",
+      "eyebrow": "Premium K-Beauty brand",
+      "title": "BRILS for wholesale partners",
+      "description": "An official Korean skincare and complexion line prepared for sales launch in your region.",
       "cta": "Continue",
       "selectedBadge": "Selected",
       "confirmation": "Country selected: {country}",
@@ -71,7 +71,7 @@
     "intent": {
       "eyebrow": "Step 2",
       "title": "What are you looking for?",
-      "description": "Choose the main scenario so we can guide you to the right catalog and commercial terms.",
+      "description": "Choose the request type so our manager can prepare relevant information.",
       "confirmation": "Selected",
       "options": {
         "wholesale": {
@@ -94,8 +94,8 @@
     },
     "products": {
       "eyebrow": "Step 3",
-      "title": "Which products interest you most?",
-      "description": "Choose a few directions so our manager can better understand your interest in the BRILS line.",
+      "title": "Which products should we review?",
+      "description": "Select the BRILS items of interest. You can choose the full line.",
       "cta": "Continue",
       "options": {
         "essence": "Essence",
@@ -108,7 +108,7 @@
     "catalog": {
       "eyebrow": "Product line",
       "title": "4 key products for your business",
-      "description": "A compact showcase in one visual language: no filters, no clutter, just the most relevant B2B SKUs.",
+      "description": "The official BRILS line for wholesale partners: 4 products ready for launch.",
       "productLabel": "Product",
       "open": "Open details",
       "items": {}
@@ -122,7 +122,7 @@
     "form": {
       "eyebrow": "Step 6",
       "title": "Where should we send the terms?",
-      "description": "Leave your business contacts and our manager will prepare relevant wholesale conditions.",
+      "description": "Leave your business contacts. Our manager will prepare wholesale terms for your request.",
       "cta": "Submit",
       "loading": "Submitting...",
       "fields": {
@@ -144,7 +144,7 @@
       "eyebrow": "Final screen",
       "title": "Your request has been received",
       "description": "",
-      "timeframe": "Our manager will contact you within 24 hours",
+      "timeframe": "Our manager will contact you and clarify supply terms",
       "conditionsTitle": "Partnership conditions",
       "conditionsDescription": "Exact conditions depend on order volume",
       "minimumOrderLabel": "Minimum order",

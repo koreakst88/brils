@@ -14,7 +14,6 @@ export function CatalogScreen() {
   return (
     <section className="screen">
       <div className="screen-card">
-        <span className="screen-eyebrow">{t("screens.catalog.eyebrow")}</span>
         <h1 className="screen-title">{t("screens.catalog.title")}</h1>
         <p className="screen-description">{t("screens.catalog.description")}</p>
 
@@ -28,7 +27,6 @@ export function CatalogScreen() {
               <div className="catalog-card__image">
                 <img src={product.images.main} alt={t(product.nameKey)} />
               </div>
-              <span className="catalog-card__type">{t("screens.catalog.productLabel")}</span>
               <strong>{t(product.nameKey)}</strong>
             </Link>
           ))}

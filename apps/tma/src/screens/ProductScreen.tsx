@@ -39,7 +39,6 @@ export function ProductScreen() {
         </div>
 
         <div className="stack">
-          <span className="screen-eyebrow">{t("screens.product.eyebrow")}</span>
           <h1 className="screen-title">{t(product.nameKey)}</h1>
           <p className="screen-description">{t(product.descriptionKey)}</p>
 
